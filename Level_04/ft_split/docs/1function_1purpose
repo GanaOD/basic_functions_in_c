@@ -1,0 +1,11 @@
+refactored process_word to only copy word, not handle storing it in the words array
+
+
+
+Yes, "eckiger" (more angular/rigid) is a good way to describe the previous version! The new structure is more elegant because it follows natural boundaries in the program's logic:
+
+process_word now has a single, clear purpose: create a new word string
+ft_split maintains full control over its array structure, deciding where to store things
+Error handling happens at the right level - if word creation fails, ft_split can handle it directly since it "owns" the array structure
+
+This kind of separation reminds me of good Unix philosophy: have each function do one thing well, with clear inputs and outputs. The previous version had process_word reaching into array management, which made the boundaries between responsibilities less clear.

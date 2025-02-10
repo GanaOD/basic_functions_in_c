@@ -1,0 +1,2 @@
+"perfect information"
+deterministic logic (same input>same result)

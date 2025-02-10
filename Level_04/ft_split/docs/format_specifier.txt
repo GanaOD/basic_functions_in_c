@@ -1,0 +1,100 @@
+here's my simple main:
+int main(int argc, char **argv)
+{
+    printf("String before split: %s", argv[1]);
+    printf("String after split: %s", (ft_split(argv[1])));
+
+    return (0);
+}
+
+compilation warning:
+format specifies type 'char *' but the argument has type 'char **'
+what's the format specifier of a char **?
+
+
+The issue is that ft_split returns char ** (an array of strings) but you're trying to print it with %s which expects a single string (char *).
+
+To print a char **, you need to iterate through each string in the array. Here's the corrected version:
+
+c
+
+Copy
+int main(int argc, char **argv)
+{
+    printf("String before split: %s\n", argv[1]);
+    
+    char **result = ft_split(argv[1]);
+    printf("String after split:\n");
+    
+    while (*result)
+        printf("%s\n", *result++);
+
+    return (0);
+}
+The key insight: %s prints until it hits a null terminator in a single string. It can't handle an array of strings (char **) directly - we need to manually iterate through each string in the array.
+
+
+
+
+and there's no format specifier that can directly deal with an array of strings?
+is this the only method then of printing it, by iterating through, printing each string of the array individually?
+
+
+Correct! There's no format specifier in C's printf that can directly handle an array of strings (char **). This reflects a fundamental aspect of C: arrays are not first-class objects that carry their own metadata about length or structure.
+
+When you have a char **, all you really have is:
+
+A pointer to the first pointer
+The convention that the array ends with a NULL pointer
+That's why we must handle it manually. The pattern you'll see everywhere in C is:
+
+c
+
+Copy
+char **arr = /* some array of strings */;
+while (*arr)
+    printf("%s\n", *arr++);
+This is similar to how C handles individual strings (char *) - there's no inherent length information, just a pointer and the convention of a null terminator \0. The %s format specifier knows to keep printing characters until it hits \0, but it doesn't know how to handle an array of such strings.
+
+This design choice in C reflects its philosophy of providing minimal abstractions over the hardware - everything else must be built up explicitly by the programmer.
+
+
+
+
+classes of objects...first, etc.
+tell me more. how many classes are there? is it only first class objects that contain metadata? is a struct also not first class because it can be "flexible"?
+
+what if we had some cool sub-program that quickly scanned my data structures, produced the meta data for me, and allowed me to stay at a higher level of abstraction?
+
+
+This touches on some fascinating fundamentals of programming language design!
+
+In programming languages, "first-class" objects are those that can be:
+
+Passed as arguments
+Returned from functions
+Assigned to variables
+Stored in data structures
+In C:
+
+Functions aren't first-class (you can only pass function pointers)
+Arrays degrade to pointers when passed (losing their size information)
+Structs are actually more "first-class" than arrays! They maintain their complete structure when passed
+Higher-level languages like Python make everything first-class:
+
+python
+
+Copy
+# Arrays know their length
+my_array = [1,2,3]
+len(my_array)  # Just works!
+
+# Functions are objects
+def foo(): pass
+my_list = [foo]  # Can store functions!
+Your idea about a "metadata generator" is basically what runtime systems do in higher-level languages! For example:
+
+Java's reflection system
+Python's type() and dir() functions
+JavaScript's typeof and prototype system
+But there's a tradeoff: this metadata and introspection capability adds overhead. C's design philosophy is "you don't pay for what you don't use" - it gives you bare metal access with minimal abstraction.

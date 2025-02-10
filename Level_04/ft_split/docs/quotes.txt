@@ -1,0 +1,41 @@
+why, when assigning a \0 to the end of ptr_write, is \0 within single quotes
+but when calling the write function with \0 it's within double quotes??
+
+
+
+There's a key difference here:
+*ptr_write = '\0' - Single quotes define a single character literal. Here we're directly writing the null terminator byte to memory.
+write(1, "\0", 1) - Double quotes define a string literal (which is actually a char array). Even though in this case it only contains a null terminator, it's still treated as a string.
+
+
+This illustrates a fundamental C concept:
+
+'\0' → single character (type char)
+"\0" → string of length 1 (type char *) that contains just a null terminator
+
+For ft_split, we want the single character version since we're doing direct memory assignment through our pointer. 
+
+
+
+and the reason the null determiner needs to be defined as a string literal with the write system call is because write takes the address of each char it writes? and a string is actually a pointer to its first char? i.e. an address?
+
+
+Exactly! You've nailed the key insight:
+write(fd, buf, count) expects its second parameter buf to be a pointer to the data it should write - it needs the memory address of where to start reading from.
+
+
+When we use a string literal "\0", C automatically:
+
+Creates the string in memory
+Gives us a pointer to its first character
+
+
+
+Whereas with a character literal '\0', we just get the raw byte value of the null terminator - not an address/pointer to it.
+That's why in ft_split, when we're doing direct memory manipulation with *ptr_write = '\0', we want the raw character value since we're dereferencing and writing to the memory location ourselves.
+
+
+This is also why these are equivalent when using write:
+char c = '\0';
+write(1, &c, 1);        // Taking address of char variable
+write(1, "\0", 1);      // Using string literal (already an address)

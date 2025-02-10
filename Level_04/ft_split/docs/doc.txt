@@ -1,0 +1,158 @@
+Learning points
+
+1st attempt:
+
+- Strict type: 1st allocation should have been for char **
+
+State machine: lacked understanding: didn't have something to track the actual state change, just the in_word function acting as detector of state.
+This meant my original logic (if (in_word(*str) == 1) { word_count++; ptr_lead++;
+}) was counting every char as a word.
+Needed to track boundaries, state changes, and get word_count to increment only when entering a new word 
+
+I declared & assigned the variables (ptr_lead, word_count) within the word counting logic...so they would reset with each iteration. word_count would therefore count every char in a word, not every word
+Also introduced the ptr_trail too early: it's only needed in 2nd pass through str 
+
+
+
+
+
+
+
+
+After some AI help:
+- more conscious understanding of pointer patterns: here a sliding window
+- Wrong while conditions, not considering whther * needed or not 
+- forgot NULL termination of final array of arrays
+
+
+
+
+2-phase approach:
+
+Yes, allocate after 1st pass : main array
+Why this works:
+
+We know exactly how many words we'll need to store
+Each word will need a pointer in our array
+We need one extra pointer for NULL termination
+This allocation happens BEFORE we start storing the actual words
+
+Then Second Pass:
+
+Go through string again
+For each word:
+
+Calculate its length
+Allocate space for that specific word
+Store the pointer to that word in our pre-allocated main array
+
+
+
+This two-phase approach has several advantages:
+
+We know exactly how much space to allocate for the pointer array
+If main allocation fails, we haven't allocated any individual words yet
+Clean error handling possible
+No need to reallocate/resize the pointer array as we find words
+
+
+
+
+
+
+
+
+
+State Machine
+- 2 states
+- transitions occur on char/delimiter boundaries
+"This clean state design will help prevent edge cases" - HOW?
+
+Pointer strategy
+- Window:
+Lead pointer explores ahead, controlling state transitions 
+Trail pointer marks word beginnings for malloc sizing
+
+
+Critical Considerations:
+
+Memory Management
+You'll need two allocation phases:
+    First pass: count words (for main array)
+    Second pass: allocate individual words
+Each string needs null termination
+The final array needs null termination
+
+
+Security Aspects:
+Buffer overflows aren't a direct concern (input is null-terminated)
+Memory leaks are the main risk - need careful cleanup if allocation fails
+Integer overflow possible when calculating word lengths
+
+
+
+
+
+
+Possible alternative implementation:
+
+Queue-based:
+
+typedef struct s_word {
+    char *start;
+    size_t len;
+    struct s_word *next;
+} t_word;
+
+// Could build linked list of words first
+// Then convert to array in one clean allocation
+
+
+Sometimes the "computer sciency" solution isn't the best engineering solution! In systems programming, especially in C, simpler often means more robust
+
+
+
+
+
+char    *ptr_lead, *ptr_trail;    
+
+is equivalent to:
+char    *ptr_lead;
+char    *ptr_trail;
+
+Both are pointers to char
+ptr_lead is a pointer that can point to any char
+ptr_trail is a separate pointer that can point to any char
+
+They're independent pointers - they can point to different chars. When we say "pointer to char", we're describing its type (what kind of thing it can point to), not what it's actually pointing to.
+
+
+
+
+
+
+
+
+we need at least 2 passes:
+
+First pass: Count words
+
+Must complete this to know size for malloc(sizeof(char *) * (word_count + 1))
+No way around this - we need to know total words before allocating array of pointers
+
+
+Second pass: Actual word processing
+
+Now we have our array of pointers allocated
+Can allocate and fill each word's string as we find it
+Store each new string's pointer in our pre-allocated array
+
+
+
+I incorrectly suggested we could do it in "single pass with pre-count" - but you're absolutely right, that pre-count IS a pass! The only real choice is:
+
+Do we do all malloc calls during 2nd pass (more efficient)
+OR
+Do we count words (1st pass), count chars (2nd pass), then do copying (3rd pass)
+
+The 2-pass approach is more efficient.

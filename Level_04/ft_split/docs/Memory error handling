@@ -1,0 +1,61 @@
+"cleanup on failure" idiom in C: when an error occurs, we systematically free resources in reverse order of allocation before returning an error state.
+
+
+For proper memory management in process_word when malloc fails, you're right - we need to handle the error, but the approach needs adjustment. Here's why:
+
+Current issue:
+
+cCopyif (!word)
+{
+    free(word);  // This is wrong - if malloc failed, word is NULL, nothing to free
+    return (NULL);  // Function is void, can't return NULL
+}
+
+Better approach:
+
+cCopyvoid process_word(char *ptr_lead, char *ptr_trail, char **words)
+{
+    int len = ptr_lead - ptr_trail;
+    char *word = malloc(sizeof(char) * (len + 1));  // Note: sizeof(char) not sizeof(char*)
+    
+    if (!word)
+    {
+        *words = NULL;  // Signal error to caller
+        return;
+    }
+    // ... rest of function
+}
+But this leads to a bigger question: How do we handle memory cleanup in the main ft_split if a word allocation fails midway?
+We need to:
+
+Detect the failure (*current_word will be NULL)
+Free all previously allocated words
+Free the words array itself
+Return NULL from ft_split
+
+
+
+
+
+i thought i had seen before in c programming this use of free as memory error management after a failed malloc call...
+
+
+The pattern you might be thinking of is when you need to free other previously allocated memory after a malloc fails. But trying to free the failed malloc itself is incorrect because:
+
+If malloc fails, it returns NULL
+Trying to free(NULL) is undefined behavior in C
+There's no memory to free since the allocation failed
+Here's a typical example where you would free after malloc fails:
+
+c
+
+Copy
+char *first = malloc(100);
+char *second = malloc(100);
+
+if (!second)  // second malloc failed
+{
+    free(first);  // Clean up previous successful allocation
+    return NULL;
+}
+For ft_split, we'll need this pattern when a word allocation fails mid-process - we'll need to free all previously allocated words and the words array itself. Want me to show that cleanup implementation?
