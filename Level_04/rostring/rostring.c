@@ -28,7 +28,7 @@ void  rostring(char *str)
 {
   char  *first_word;
   int   len = 0;
-  int   space_written = 0;
+  int   first_printed = 0;
 
   // handle leading space
   while (is_space(*str))
@@ -55,18 +55,17 @@ void  rostring(char *str)
     {
       while (is_space(*str))
         str++; // increment through all spaces
-      space_written = 0; // reset flag
-      if (*str) // if not end of string
+      if (*str && first_printed) // if not end of string
         write (1, " ", 1); // write 1 space 
     }
     else
     {
       write (1, str++, 1);
-      space_written = 1;
+      first_printed = 1;
     }
   }
   // space between last word processed in str and the final word (stored)
-  if (space_written)
+  if (first_printed)
     write (1, " ", 1);
 
   write (1, first_word, len);
