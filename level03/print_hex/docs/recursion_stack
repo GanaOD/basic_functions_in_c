@@ -1,0 +1,53 @@
+Why %16 necessary when accessing corresponding hex digit from lookup table for each number?
+
+The stack "unwinds" with the original numbers still intact
+
+Example:
+
+Stack building up:        Unwinding & printing:
+423 ≥ 16, push 423       digits[423 % 16] = digits[7] → "7"
+ ↓ 423/16 = 26
+26 ≥ 16, push 26         digits[26 % 16] = digits[10] → "a"  
+ ↓ 26/16 = 1
+1 < 16, start printing   digits[1] → "1"
+
+Each frame of the stack maintains its full value when unwinding - the division by 16 was only used to determine when to stop recursing
+
+
+Explicit explanation to help build my mental model:
+
+what happens with the function call stack:
+
+
+When put_hex(423) is called:
+
+A new stack frame is created
+The value 423 and the function's local variables are stored there
+Since 423 ≥ 16, it calls put_hex(26)
+This current frame waits for the recursive call to return
+
+
+For put_hex(26):
+
+Another new stack frame is pushed on top
+26 and its local variables stored here
+Since 26 ≥ 16, calls put_hex(1)
+This frame waits
+
+
+For put_hex(1):
+
+Final stack frame pushed on top
+1 is stored here
+Since 1 < 16, it prints digits[1]
+This frame pops off
+
+
+Return to previous frames:
+
+Each frame "unwinds", executing the code after their recursive calls
+That's where the % 16 operations happen
+
+
+
+The call stack acts like a stack of plates - you can only work with the top one, and must process them in last-in-first-out order.
