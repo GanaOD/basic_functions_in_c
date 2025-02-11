@@ -1,0 +1,6 @@
+while (*++av)
+
+pre-increment operator to skip av[0]
+
+prefix ++ has higher order precendence than *
+both have right-to-left associativity
