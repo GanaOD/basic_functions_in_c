@@ -1,11 +1,5 @@
 (After leading space handling)
 
-
-
-# Switched to index notation
-Prevents introduction of helper pointers
-
-
 while (str[len] && !is_space(str))
   len++;
 
@@ -17,9 +11,12 @@ str+=len; // Move past the word we just stored
 
 
 
+# Switched to index notation
+Prevents introduction of helper pointers
 
 
-## Termination conditions
+
+# Termination conditions
 Originally only considered a subset of all termination conditions:
 space 
 where Word Termination Set = {space, tab, \0} (i.e. str could end after first word)
@@ -38,7 +35,7 @@ Missing one = potential bug
 
 
 
-## Two-Phase Operation Pattern:
+# Two-Phase Operation Pattern:
 
 Phase 1: Measurement (len counting)
 [h][e][l][l][o][ ]...
@@ -61,3 +58,19 @@ Information gathering (measurement)
 Action based on gathered info (movement)
 
 more efficient than moving-while-measuring when I need the measurement for another purpose (like malloc)
+
+
+
+
+Notation: operator overloading, compound assignment operators
+
+str += len;
+
+==
+
+str = str + len;
+
+==
+
+while (len > 0)
+    str++, len--;

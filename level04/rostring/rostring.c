@@ -19,8 +19,6 @@ char  *store_word(char *str, int len)
   }
   word[i] = '\0';
 
-  printf("Debug: word to be stored: %s\n", word);
-
   return (word);
 }
 
@@ -33,14 +31,11 @@ void  rostring(char *str)
   // handle leading space
   while (is_space(*str))
     str++;
-  
-  printf("Debug: Handled leading space\n");
 
   while (str[len] && !is_space(str[len]))
     len++;
   if (!len)
     return;
-  printf("Debug: len of first word = %d\n", len);
 
   first_word = store_word(str, len);
   
@@ -55,7 +50,7 @@ void  rostring(char *str)
     {
       while (is_space(*str))
         str++; // increment through all spaces
-      if (*str && first_printed) // if not end of string
+      if (*str && first_printed) // if not end of string && not first word
         write (1, " ", 1); // write 1 space 
     }
     else
