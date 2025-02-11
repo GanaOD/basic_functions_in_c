@@ -1,0 +1,16 @@
+After mallocing space for new string (the first word to be stored in program)
+
+Copying operation: copying the first word from main string to this
+
+Wrong: originally tried using condition:
+while (*this_newly_malloced_string)
+{
+  copying
+} 
+
+Forgot that this is unitialised memory. The string will end up being the same length as the word, and this is the amount of memory that was malloced, but I need to consider more carefully the conditions I set for operations. In this case: incrementing within the bounds of a string (up to before its null determiner): only possible with an actual string 
+
+Key Principle:
+- Only read from initialized memory
+- Use source string to control iteration
+- Destination memory is just space until I write to it
