@@ -11,3 +11,12 @@ Your function must be declared as follows:
 void	print_bits(unsigned char octet);
 
 Example, if you pass 2 to print_bits, it will print "00000010"
+
+
+while (i >= 0)
+	{
+		bits[i] = (n % 2) + '0';
+		n = n / 2;
+		i--;
+	}
+	write(1, bits, 8);

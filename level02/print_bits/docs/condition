@@ -1,0 +1,46 @@
+instead of: while (position >= 0)
+
+I originally had: while (position <= 15)
+
+concrete problem:
+
+	Moving AWAY from 15 (down)
+  but checking if we're still BELOW 15!
+
+	loop's movement (decreasing) and its termination check (<=) 
+	were working against each other - was moving away from termination value forever
+
+	(prog would crash when trying to access bits[-1])
+
+
+
+general insight:
+
+
+When designing a loop or recursive process, we need to think about:
+
+	Termination condition ("base case")
+
+What's our endpoint?
+When should we stop?
+In our case: when we've filled the last (leftmost) position (0)
+
+
+	Progress toward that condition
+
+How do we move toward our endpoint?
+Is each iteration getting us closer?
+In our case: position-- moves us toward 0
+
+
+	Direction of movement
+
+Are we counting up or down?
+If counting down, stop at >= some number
+If counting up, stop at <= some number
+
+
+
+principle:
+when designing any iterative or recursive process, 
+ensure you're moving TOWARD your termination condition, not away from it.

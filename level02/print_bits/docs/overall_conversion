@@ -1,0 +1,85 @@
+Mathematical perspective:
+
+When dividing by 2, the remainder (modulo) can only be 0 or 1
+This maps perfectly to binary digits
+
+Each position represents a power of 2:
+Position:    7 6 5 4 3 2 1 0
+Power of 2:  2⁷ 2⁶ 2⁵ 2⁴ 2³ 2² 2¹ 2⁰
+Value:      128 64 32 16  8  4  2  1
+
+
+Algorithmic view:
+
+2 ÷ 2 = 1 remainder 0  → rightmost position
+1 ÷ 2 = 0 remainder 1  → second from right
+0 ÷ 2 = 0 remainder 0  → rest are 0s
+
+
+Array filling visualization:
+
+i=7 →[_][_][_][_][_][_][_][_]  Initial array
+i=6 →[0][_][_][_][_][_][_][0]  First remainder
+i=5 →[0][0][_][_][_][_][1][0]  Second remainder
+... →[0][0][0][0][0][0][1][0]  Final result
+
+
+
+
+
+
+char	bits[8]
+array of 8 chars to store chars that will make up binary string
+
+Syntax read as:
+	char - data type of each element
+	bits - name of the array
+	[8] - size of the array (number of elements)
+
+
+
+
+
+
+	Recursive approach in print_hex:
+		divide by base, build up call stack
+		print whilst "unwinding"
+
+	Here: iterative array approach:
+		stores results directly in memory, prints them all at once
+
+
+	
+Core pattern these approaches share:
+
+	1. Breaking down a number via "successive division":
+
+	Any number → ÷2 → ÷2 → ÷2 → ÷2 → ... until 0
+   23    →  11 →  5  →  2  →  1  →  0
+
+
+	2. Capturing remainders:
+
+	Base conversion logic:
+	"Each step's remainder is a digit in the target base"
+
+
+	2 ways to capture & store this information:
+
+Stack Method (Recursion)           Array Method (Iteration)
+─────────────────────             ────────────────────
+      ┌─────┐                     [_][_][_][_][_][_][_][_]
+      │  0  │                              ↓
+      ├─────┤                     Fill array right-to-left
+      │  1  │                     as we generate remainders
+      ├─────┤                     
+      │  2  │                     
+      ├─────┤                     
+      │  5  │                     
+      ├─────┤                     
+      │  11 │                     
+      ├─────┤                     
+      │  23 │                     
+      └─────┘
+
+Core insight: Both methods create a structure (stack or array) to hold intermediate results before outputting them in reverse order of generation
