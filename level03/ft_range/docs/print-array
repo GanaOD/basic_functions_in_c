@@ -1,0 +1,20 @@
+basic main function: want to print result to stdout
+
+no built-in function that will automatically iterate and print an array of integers
+
+insights:
+	
+	Arrays in C don't carry their length information with them
+	
+	Unlike strings (which are terminated by '\0'), there's no standard delimiter for integer arrays
+
+	The system needs to know both:
+		Where to start in memory ( pointer)
+		How many integers to print ( length)
+
+
+
+passed len by pointer 
+
+
+then ditched this main

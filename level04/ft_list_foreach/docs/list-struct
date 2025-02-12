@@ -19,6 +19,14 @@ struct s_list    struct s_list    struct s_list
 Each node's next points to another complete s_list structure. It can do this because even though we're still defining the structure, C allows us to declare a pointer to that same structure type we're defining
 
 next doesn't store the entire next node - it just stores the memory address where the next node lives. This is why we can have a structure that "contains itself" - we're not really containing the whole structure, just an address pointing to another one!
+"maintaining the chain of knowledge"
+
+The struct s_list *next only declares that this pointer CAN point to another s_list structure. It doesn't automatically point anywhere!
+We explicitly set where it points when we write code like:
+cCopynode1->next = node2;    // We tell next where to point
+node2->next = node3;    // Each pointer is manually set
+node3->next = NULL;     // End of list
+(in test suite)
 
 
 different from e.g.:
