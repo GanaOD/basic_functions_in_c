@@ -1,0 +1,19 @@
+begin_list->data
+
+->  syntactic sugar for (*begin_list).data
+dereferences the pointer to access the struct's data member
+data itself is still a pointer (to void)
+
+begin_list: ptr to a struct 
+no need to dereference - we're checking pointer validity (if the pointer itself is NULL)
+
+
+
+begin_list->next 
+
+enables traversal through list
+
+gets the address stored in the current node's 'next' pointer
+This address becomes the new value of begin_list
+
+So begin_list "moves" from pointing to the current node to pointing to the next node in the list. This is how we traverse the list, node by node, until we hit NULL

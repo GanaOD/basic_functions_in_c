@@ -1,0 +1,19 @@
+void (*f)(void *)
+
+The WHOLE thing is a parameter type
+"f is a pointer to a function that..."
+"...must return void..."
+"...and take one void* parameter"
+
+The brackets around (*f) are crucial - they bind the asterisk to f to make it a function pointer, rather than a function that returns a pointer
+
+
+1st encounter with passing functions as parameters 
+apparently lets you write flexible code. 
+my ft_list_foreach can work with ANY function that matches this signature/ prototype pattern: return void, take one void* parameter
+
+
+
+f(begin_list->data)
+==
+(*f)(begin_list->data)
