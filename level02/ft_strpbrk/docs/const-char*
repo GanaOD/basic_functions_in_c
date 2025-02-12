@@ -1,0 +1,15 @@
+I originally declared s2_scout as char * & casted s2 > char *
+
+from safety & design perspective, declaring const char *s2_scout better:
+
+type safety
+	casting away const with s2 weakens the compiler's ability to catch potential errors
+
+intent signaling
+	using const char * clearly communicates that this is just a scout/cursor for reading 
+	- we won't modify the original string
+
+security
+	Casting away const could theoretically allow code changes that modify the 
+	original string. While not doing this here, it's good practice to maintain 
+	const-correctness when possible.
