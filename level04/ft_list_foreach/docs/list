@@ -1,0 +1,33 @@
+what makes it a "list"?
+You nailed it - it's ONLY the fact that each piece of data is connected to the next via these pointers. There's no special "list entity" - it's just this chain of connections.
+
+
+variable name
+linked_list would be more meaningful to me
+the parameter name should reflect what it represents: a pointer to a node in the list, from which we start traversing
+
+
+
+
+
+for lols: list variations: some structures:
+
+1. Cyclic list:
+A → B → C → D → B  (D points back to B)
+
+2. Doubly-linked:
+NULL ← A ⟷ B ⟷ C ⟷ D → NULL
+       ↓    ↓    ↓     ↓
+    data1 data2 data3 data4
+
+3. Circular list:
+A → B → C → D → A  (Deliberately cycles to start)
+↓   ↓   ↓   ↓
+d1  d2  d3  d4
+
+
+Each structure has unique security implications:
+
+Cycles (unintentional): Can cause infinite loops
+Circular (intentional): Useful for round-robin scheduling but need careful termination conditions
+Type-unsafe void*: Could allow data corruption if misused

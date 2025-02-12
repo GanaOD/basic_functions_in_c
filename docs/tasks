@@ -1,1 +1,7 @@
-implement queue-based approach to flood_fill
+flood_fill:
+	implement queue-based approach
+
+
+ft_listforeach:
+	Explore how to detect cycles in a list
+	See how Ada's type system would handle this list problem differently

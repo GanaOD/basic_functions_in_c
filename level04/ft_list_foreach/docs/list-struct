@@ -1,0 +1,31 @@
+typedef	struct s_list
+{
+	struct s_list	*next;
+	void					*data; // ptr to any type of data
+}	t_list;
+
+
+next:
+self-referential structure - the struct contains a pointer to another instance of itself
+this makes the "chain" possible
+
+[Node A]         [Node B]         [Node C]
+struct s_list    struct s_list    struct s_list
++----------+     +----------+     +----------+
+|next: ----+---->|next: ----+---->|next: NULL|
+|data: 0   |     |data: 3   |     |data: 4   |
++----------+     +----------+     +----------+
+
+Each node's next points to another complete s_list structure. It can do this because even though we're still defining the structure, C allows us to declare a pointer to that same structure type we're defining
+
+next doesn't store the entire next node - it just stores the memory address where the next node lives. This is why we can have a structure that "contains itself" - we're not really containing the whole structure, just an address pointing to another one!
+
+
+different from e.g.:
+
+struct s_list {
+    struct s_list next;   // ERROR: Can't contain itself directly!
+    void *data;
+};
+
+Which would try to contain the whole structure inside itself (infinite recursion)
