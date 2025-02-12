@@ -1,0 +1,24 @@
+Was counter-intuitive to me: [y,x] where I'm used to using (x, y) in mathematics
+
+Same here as in corrdinates of Excel spreadsheet
+
+in array access we go [y][x] because:
+	First we select which row (y coordinate)
+	Then we select which column in that row (x coordinate)
+
+
+Why?
+The row-first [y][x] convention comes from how computer memory is organized linearly. 
+Arrays in memory are stored row by row:
+Memory layout:
+[Row0Col0][Row0Col1][Row0Col2] | [Row1Col0][Row1Col1][Row1Col2]
+
+So when I access tab[1][2], the computer:
+	First jumps to row 1 (which it can do quickly because rows are stored sequentially)
+	Then moves 2 positions right in that row
+
+This was efficient for early computers that accessed memory sequentially.
+
+Meanwhile, the (x,y) coordinate convention comes from mathematics/Cartesian coordinates, where:
+	x traditionally represents horizontal movement (left/right)
+	y represents vertical movement (up/down)

@@ -1,14 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct s_point
-{
-    int x;
-    int y;
-} t_point;
-
-void flood_fill(char **tab, t_point size, t_point begin);
+#include "flood_fill.h"
 
 // Utility function to create a 2D array from string array
 char **make_area(char **zone, int rows)

@@ -1,0 +1,54 @@
+t_point struct:
+
+Used to bundle related x,y coordinates together
+Makes it cleaner to pass coordinate pairs around instead of separate x,y parameters
+
+Use in this program:
+	size: represents boundaries of the grid (width, height)
+	begin: represents starting position for the flood fill
+
+
+
+typedef: reason for usage
+
+More concise:
+void flood_fill(char **tab, t_point size, t_point begin)
+
+
+
+Security/Systems Insights:
+
+	Memory Layout: 
+	Both versions create identical memory layouts - two contiguous integers (typically 8 bytes total on modern systems: 4 bytes for each int)
+	Memory: [x (4 bytes)][y (4 bytes)]
+
+	Type Safety: 
+	typedef can help prevent type confusion vulnerabilities by making the type more explicit. Without typedef, there's a small risk of confusing struct s_point* with just int* since both point to the first integer
+
+	Buffer Overflows: 
+	The struct's fixed size helps prevent buffer overflows since the compiler knows exactly how much memory to allocate. Whether typedef is used or not, attempting to access beyond x or y would be a compile-time error
+
+	Stack Layout: 
+	When passing these structs to functions, they're typically passed by value, creating a copy on the stack. The typedef doesn't change this behavior, but makes the intent clearer
+
+	Binary Analysis: 
+	When reverse engineering binaries, typedefs can make the code more resistant to analysis since the typedef name might obscure the underlying type. However, this is security through obscurity and not a real security measure
+
+	
+The typedef here is mainly about code readability and maintainability rather than security or performance.
+
+
+
+About abstraction
+Part of broader "type aliasing / definition"
+
+core idea is abstraction over data types. This serves multiple purposes:
+
+	Documentation - the name describes what the type represents
+
+	Maintainability - if you need to change the underlying type, you only change it in one place
+	
+	Type safety - helps catch errors where wrong types are used
+
+	
+For flood_fill specifically, typedef isn't crucial - it's just making the code cleaner by avoiding writing struct s_point repeatedly. The functionality would be identical without it.
