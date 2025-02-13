@@ -1,0 +1,23 @@
+Based off hiddenp
+
+Expected files: subseqp.c
+Allowed functions: write, malloc, free
+
+Write a program named subseqp that takes three strings and displays 1 followed by a newline if the first string is hidden as multiple non-overlapping subsequences within the second string, and if the sum of the lengths of these subsequences is equal to the third parameter (which will be a positive number provided as a string). Otherwise, it displays 0 followed by a newline.
+Let s1 and s2 be strings. A character from s2 can only be used once. The empty string is considered to have length 0.
+If the number of parameters is not 3, or if the third parameter is not a valid positive number, the program displays a newline.
+
+
+Examples:
+$>./subseqp "aaaa" "baaabaa" "4" | cat -e
+1$
+$>./subseqp "aaa" "baaabaa" "3" | cat -e
+1$
+$>./subseqp "aaa" "baaabaa" "2" | cat -e
+0$
+$>./subseqp "abc" "btarc" "3" | cat -e
+0$
+$>./subseqp "abc" "btarctabc" "6" | cat -e
+1$
+$>./subseqp | cat -e
+$
