@@ -1,0 +1,62 @@
+Based off hiddenp
+
+Assignment name  : jumpseek
+Expected files   : jumpseek.c
+
+Allowed functions: write
+
+Write a program named jumpseek that takes two strings and displays 1
+followed by a newline if the first string can be found in the second one by
+skipping exactly one character between each match. Otherwise displays 0
+followed by a newline.
+
+Let s1 and s2 be strings. We say that s1 is "jumpable" in s2 if we can find each
+character from s1 in s2, in the same order as they appear in s1, with exactly
+one character between each match. We must always move forward in s2.
+The empty string is considered jumpable in any string.
+
+If the number of parameters is not 2, the program displays a newline.
+
+Examples:
+$>./jumpseek "hey" "habcezy" | cat -e
+0$
+$>./jumpseek "abc" "axbxc" | cat -e
+1$
+$>./jumpseek "abc" "axbcxx" | cat -e
+0$
+$>./jumpseek "a" "a" | cat -e
+0$
+$>./jumpseek "" "anything" | cat -e
+1$
+$>./jumpseek | cat -e
+$
+$>
+
+Visualization of a valid match:
+"abc" in "axbxc":
+a _ b _ c
+^   ^   ^   
+|   |   |   
+Matches with exactly one char between
+
+
+
+void    jumpseek(char *s1, char *s2)
+{
+    if (!*s1)
+    {
+        write(1, "1", 1);
+        return;
+    }
+    while (*s1 && *s2 && *(s2 + 1))  // Need at least 2 chars in s2 for stride
+    {
+        if (*s2 == *s1)
+        {
+            s1++;
+            s2 += 2;  // Fixed stride
+        }
+        else
+            s2++;
+    }
+    write(1, (*s1 ? "0" : "1"), 1);  // Success only if we consumed all of s1
+}
