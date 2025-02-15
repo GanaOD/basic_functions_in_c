@@ -1,0 +1,19 @@
+Lookup tables vs direct computation:
+Lookup tables are better when:
+
+Computation is expensive (many operations)
+Input range is small and fixed
+Speed is critical
+Same values needed repeatedly
+
+For example: sin(x) in graphics engines often uses lookup tables because:
+
+Trigonometric computation is expensive
+Angles often fall in predictable ranges (0-360°)
+Games need it fast, many times per frame
+
+But here:
+
+Computation is just simple subtraction (c - '0' or c - 'a' + 10)
+Logic is clear and maintainable
+Memory tradeoff isn't worth it for such simple operations

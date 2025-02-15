@@ -1,0 +1,10 @@
+misunderstood subject: that input would be in hex specifically
+led to complex hex-specific operations incl. modulo, converting to array indices...over-engineered
+
+iterative solution: mirrors natural reading & processing of numbers, left > right, building up value position by position
+
+look-up table, char[] to access new digit
+	> get_digit function converts individual chars
+
+process str, end > front
+	> positional weights naturally build when processing left > right

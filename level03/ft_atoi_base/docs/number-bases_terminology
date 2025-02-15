@@ -1,0 +1,4 @@
+digit >= str_base
+
+using a digit that's beyond the scope of digits used in this number system: not possible
+would break the foundational rules of positional number systems
