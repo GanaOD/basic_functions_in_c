@@ -64,15 +64,12 @@ Also changed logic for proper nesting of logical domains.
 From outermost to innermost:
 
 String domain: while (ptr_lead >= ptr_begin)
-
-This establishes our entire working space
-All other operations must exist within these bounds
-
+	This establishes our entire working space
+	All other operations must exist within these bounds
 
 Word domain: while (ptr_lead > ptr_begin && !is_space(*ptr_lead))
-
-Searches for word boundaries within string domain
-A sub-operation that must respect outer domain's constraints
+	Searches for word boundaries within string domain
+	A sub-operation that must respect outer domain's constraints
 
 
 
