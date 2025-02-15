@@ -1,0 +1,83 @@
+ATTEMPT:
+
+while (!is_space(*ptr_lead) && (ptr_lead != ptr_begin))
+    ptr_lead--;  // find start of word
+
+// Then this convoluted check:
+if (is_space(*(ptr_lead - 1)) || ((ptr_lead - 1) == ptr_begin))
+    write...
+
+
+
+ISSUES:
+
+1. (stupid) didn't reset ptr_trail & make use of the sliding pointer window idea..
+
+
+2. peeking ahead AND checking string start in same condition - mixing 2 different boundary cases
+
+
+Math perspective: category error - mixing two different types of boundaries that, while both telling us "write the word", have fundamentally different implications for the next steps:
+
+Space boundary: Signals both
+	"Write current word"
+	"Continue processing - more words exist"
+
+
+String start boundary: Signals
+	"Write current word"
+	"Stop processing - done"
+
+
+
+By combining these in a single predicate if (space OR start), I lost the distinction between these 2 categories of boundary conditions. 
+Each category should trigger its own distinct control flow.
+
+
+
+
+
+Deriving principles for structured program design:
+
+Separation of Concerns
+	Each boundary condition (space vs start) represents a distinct concern
+	Should be handled separately despite similar initial actions
+
+State Transitions
+Each word boundary represents a state change in my traversal
+Need explicit handling of:
+	State detection (finding boundary)
+	State action (writing word)
+	State transition (setting up next window)
+
+Invariants
+	Pointer window should maintain consistent properties
+	ptr_trail marks word end
+	ptr_lead scouts for word start
+	These relationships must be preserved after each operation
+
+
+
+
+
+Also changed logic for proper nesting of logical domains.
+From outermost to innermost:
+
+String domain: while (ptr_lead >= ptr_begin)
+
+This establishes our entire working space
+All other operations must exist within these bounds
+
+
+Word domain: while (ptr_lead > ptr_begin && !is_space(*ptr_lead))
+
+Searches for word boundaries within string domain
+A sub-operation that must respect outer domain's constraints
+
+
+
+The original structure mixed these domains incorrectly. By establishing string traversal as our primary domain, word-level operations naturally fit within it as sub-operations.
+This is like in mathematics where we:
+
+First establish our domain (e.g., ℝ)
+Then define operations valid within that domain (e.g., continuous functions on ℝ)

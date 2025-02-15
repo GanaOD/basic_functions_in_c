@@ -1,0 +1,44 @@
+Based of ft_atoi_base
+
+Expected files   : ft_convert_base.c
+Allowed functions: malloc, free
+
+Write a function that converts a string representation of a number in base N (N ≤ 36)
+to a string representation in base M (M ≤ 36) and returns it.
+
+The characters recognized in the input are: 0123456789abcdefghijklmnopqrstuvwxyz
+These should be trimmed according to the requested base. For example, base 7 recognizes
+"0123456" and base 36 recognizes all characters.
+
+Uppercase letters must also be recognized: "k7B2z" is the same as "K7b2Z".
+
+The result must be returned in lowercase.
+
+Multiple minus signs should toggle the sign of the result. For example:
+"-42" -> negative
+"--42" -> positive
+"---42" -> negative
+
+
+Your function must be declared as follows:
+char	*ft_convert_base(const char *str, int from_base, int to_base);
+
+
+The function should return NULL if:
+	Either base is less than 2 or greater than 36
+	Memory allocation fails
+	Input string is NULL
+	Input string contains invalid characters for the given source base
+
+
+Note: You must manage your memory correctly. No leaks will be tolerated.
+
+
+
+This builds on your understanding of:
+
+	Converting between bases (now with a larger range)
+	String manipulation
+	Dynamic memory allocation
+	Multiple sign handling (a twist on your previous single-sign logic)
+	Error cases and memory safety

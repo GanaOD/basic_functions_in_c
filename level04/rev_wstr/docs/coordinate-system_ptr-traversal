@@ -1,0 +1,26 @@
+Backward traversal of string 
+
+ptr_lead--
+
+
+coordinate systems and direction of traversal
+
+In memory/string space, there's a natural coordinate system where addresses increase from start to end (positive direction). 
+
+But ptr_lead's traversal is in the negative direction relative to this underlying space.
+
+
+
+like a number line:
+
+Memory addresses increasing →
+     0   1   2   3   4   5
+     h   e   l   l   o   \0
+     ←   ←   ←   ←   ← 
+     ptr_lead's movement
+
+
+similar to how in physics/math we might have:
+	A fixed coordinate system (memory addresses)
+	An object moving in the negative direction relative to those coordinates
+	But from the object's perspective, it's moving "forward" in its own reference frame
