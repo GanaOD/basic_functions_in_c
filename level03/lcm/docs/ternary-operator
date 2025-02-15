@@ -1,0 +1,108 @@
+conditional operator that takes three operands
+
+condition ? value_if_true : value_if_false
+
+here:
+multiple = (a > b) ? a : b;
+
+equivalent to:
+if (a > b)
+    multiple = a;
+else
+    multiple = b;
+
+
+
+Key uses of ternary:
+
+ASSIGNMENT IN ONE LINE
+Perfect for simple conditional assignments. You get the operation and both possible values in one clear expression.
+
+EXPRESSIONS VS STATEMENTS
+Ternary is an expression (returns a value), while if-else is a statement. This means ternary can be used:
+	Inside other expressions
+	As function arguments
+	In return statements
+
+return (x > 0) ? x : -x;  // absolute value in one line
+
+COMPILER OPTIMIZATION
+Some compilers can optimize ternary operators better than if-else blocks, especially in simple cases like this.
+
+
+However, ternary operators can make code harder to read if:
+	Nested
+	Used with complex conditions
+	Multiple operations needed for each case
+
+
+
+inner dialogue, constructing line:
+
+I need to initialize multiple with the larger of two numbers
+
+To write this as a ternary expression:
+
+First I need my CONDITION: is a greater than b? (a > b)
+Then I need what happens if that's TRUE: I want a
+Then what happens if that's FALSE: I want b"
+
+
+So putting it in ternary syntax:
+
+CONDITION ? VALUE_IF_TRUE : VALUE_IF_FALSE
+(a > b)   ?     a         :     b
+
+
+This whole expression will evaluate to either a or b, and that result gets assigned to multiple:
+multiple = (a > b) ? a : b;
+
+
+
+key insight: The ternary operator is an EXPRESSION that EVALUATES to one of two values based on a condition. It's not executing statements - it's choosing a value.
+
+
+
+EXPRESSIONS vs STATEMENTS
+
+EXPRESSIONS:
+
+Compute/evaluate to a value
+Can be used wherever a value is needed
+
+5 + 3             // evaluates to 8
+x > y             // evaluates to 0 or 1
+a > b ? a : b     // evaluates to either a or b
+
+
+
+STATEMENTS:
+
+Perform actions
+Don't produce values you can use
+Control program flow
+
+if (x > y) { ... }     // performs a branch
+while (condition) {...} // performs iteration
+x = 5;                 // performs assignment
+
+
+
+Key Insight: Think of expressions like NOUNS (things) and statements like VERBS (actions)
+
+
+
+This distinction becomes clear in usage:
+
+// VALID - expression used where value needed
+int x = (a > b ? a : b);  
+
+// INVALID - can't use if-else where value needed
+int x = (if (a > b) a else b);  // Won't compile!
+
+// VALID - statement used for action
+if (a > b) 
+    x = a;
+
+		
+This is why ternary is powerful - it lets you make decisions (like if-else) but in places where you need a value (like assignments, function arguments, return statements).

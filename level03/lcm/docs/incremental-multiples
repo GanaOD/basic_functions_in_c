@@ -1,0 +1,56 @@
+Handles base case (if either number is 0)
+
+Starts with the larger number: 
+	LCM can't be smaller
+	fewer iterations until LCM
+Keeps incrementing until we find a number divisible by both
+
+Security consideration: 
+vulnerable to integer overflow attack if LCM exceeds UINT_MAX
+
+performance implications of this approach vs Euclidean:
+CURRENT APPROACH:
+
+Time Complexity: O(n) where n is the actual LCM value. Could be VERY large.
+Example: lcm(98765, 54321)
+
+Must increment and check each multiple until we find one divisible by both
+Could iterate millions of times!
+
+
+Memory: O(1) - just stores a few variables
+
+EUCLIDEAN APPROACH:
+
+Time Complexity: O(log min(a,b))
+
+Each step reduces problem size by at least half
+MUCH faster for large numbers
+
+
+Memory: O(1) - also just a few variables
+
+Security/Safety Issues:
+
+Current approach:
+
+Risk of infinite loop if LCM > UINT_MAX
+CPU could be maxed out with carefully chosen inputs
+Potential DoS attack vector
+
+
+Euclidean:
+
+More predictable runtime
+Less vulnerable to malicious inputs
+Still needs overflow check when multiplying a*b
+
+
+
+Visual comparison of operations for lcm(24, 36):
+CopyCurrent: 
+36 -> 37 -> 38 -> 39 -> ... -> 72  (36 checks!)
+
+Euclidean:
+24,36 -> 24,12 -> 0,12  (just 2 division steps!)
+Then one multiplication and division

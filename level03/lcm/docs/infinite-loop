@@ -1,0 +1,16 @@
+while (1) means "loop forever" because 1 is always true in C. It's an infinite loop that will only stop when we hit a return statement inside it
+
+
+
+alternative equivalent ways to write an infinite loop in C:
+
+while (true)   // if <stdbool.h> is included
+for (;;)       // empty for loop
+do {} while(1) // do-while version
+
+
+for (;;) is particularly idiomatic in C - it's commonly used because:
+
+It's visually distinctive
+Clearly shows intent for an infinite loop
+The empty initialization, condition, and increment sections (;;) make it obvious there's no planned exit condition except from within
