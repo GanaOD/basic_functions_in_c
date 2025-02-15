@@ -1,0 +1,59 @@
+# mistake made:
+
+get_digit :
+
+if (condition 1)
+
+if (condition 2)
+
+if (3)
+
+else
+	return (0)
+
+
+could potentially overwrite a valid value with subsequent checks
+
+
+
+## led to brief study of conditional statements
+
+Imagery:
+
+else if creates logical fork
+	once condition met, all other paths blocked
+
+if : like separate roads, all get travelled, potentially overwriting previous results
+
+
+## with brief look at set theory > partition theory
+
+if-else chains create a proper partition of input space - every input belongs to exactly one category, with no overlap
+
+
+
+
+
+# moving through minus signs 
+
+mistake: 
+while (*str == '-') 
+had string increment within it
+"state machine", consumed multiple minus signs, each setting sign to -1 redundantly
+
+
+
+correct: if
+new state machine:
+Initial state → sees '-' → sets sign & advances ONCE → number parsing state
+											 ╰→ directly to number parsing if no '-'
+
+
+Here, only want to recognize a minus sign if it's the first character. Any subsequent minus signs should make the input invalid.
+
+like a gatekeeper - only want to check ID at the entrance (if), not at every room in the building (while)
+
+
+
+if: Single predicate evaluation
+while: Fixed-point iteration of a predicate

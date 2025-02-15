@@ -14,6 +14,8 @@ Uppercase letters must also be recognized: "12fdb3" is the same as "12FDB3".
 
 Minus signs ('-') are interpreted only if they are the first character of the
 string.
+// means: interpreted only if 1st char! read the subject dude. nothing here about
+// toggling / multiple signs allowed..!
 
 
 Your function must be declared as follows:
