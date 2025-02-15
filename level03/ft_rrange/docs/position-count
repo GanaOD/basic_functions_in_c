@@ -1,0 +1,5 @@
+Finding length of array between start & end for malloc:
+
+The +1 bridges this gap between:
+	Zero-based indexing (position measurements)
+	Cardinal counting (how many elements)

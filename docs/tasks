@@ -1,5 +1,8 @@
+ft_rrange
+	bitwise operations for int diff
+
 flood_fill:
-	implement queue-based approach
+	queue-based approach
 
 
 ft_listforeach:
