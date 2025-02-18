@@ -1,0 +1,22 @@
+Inclusive / exclusive?
+
+Significance for 
+	loop conditions
+	index / ptr arithmetic
+	edge case handling
+
+In my final implementation: used both inclusive (char > char) & exclusive (spaces as boundaries)
+
+
+
+
+I liked the idea of reducing state management by:
+treating a word as being strictly bounded by:
+	Beginning pointer points to first char
+	End pointer points to last char
+
+would mean;
+	When scanning backwards, stop at first char of word (not the space before)
+	Calculate length as: (end - start + 1)
+	Handle spaces separately and uniformly
+

@@ -1,0 +1,26 @@
+Assignment: ft_split_mod
+Turn in files: ft_split_mod.c
+Allowed functions: malloc
+
+Write a function that takes a string and a delimiter character, splits the string into segments, and returns them as a NULL-terminated array of strings.
+
+A "segment" is defined as a part of a string delimited by the specified delimiter character, or by the start/end of the string.
+
+Your function must be declared as follows:
+char **ft_split_mod(char *str, char delim);
+
+
+Examples:
+Input: str = "apple,banana,orange", delim = ','
+Return: ["apple", "banana", "orange", NULL]
+
+Input: str = "hello", delim = 'x' 
+Return: ["hello", NULL]
+
+Input: str = ",test,,split,", delim = ','
+Return: ["", "test", "", "split", "", NULL]
+
+
+The words must be extracted as if they were delimited by a single character. 
+
+The function returns NULL if allocation fails.

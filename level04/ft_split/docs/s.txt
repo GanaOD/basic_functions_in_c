@@ -14,18 +14,3 @@ Your function must be declared as follows:
 char    **ft_split(char *str);
 
 
-char    ptr_lead = str;
-int     word_count = 0;
-int     in_word_flag = 0;  // Track state
-while (ptr_lead)
-{
-    if (in_word(ptr_lead) && !in_word_flag)
-    {
-        word_count++;
-        in_word_flag = 1;
-    }
-    else if (!in_word(ptr_lead))
-        in_word_flag = 0;
-    ptr_lead++;
-}
-
