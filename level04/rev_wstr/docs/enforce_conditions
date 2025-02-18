@@ -1,0 +1,29 @@
+my attempt: end of while loop loop, after having writting word:
+
+if (is_space(*(ptr_lead - 1))) // if next char is space
+		write (1, " ", 1); // write 1 space
+		// go back to beginning of this while loop, repeat logic for next word
+else if ((ptr_lead - 1) == ptr_begin)
+	return ;
+
+
+changed to: 
+
+if (ptr_lead > ptr_begin)
+  write(1, " ", 1);
+else
+  return;
+
+After while (ptr_lead > ptr_begin && !is_space(*(ptr_lead - 1))):
+
+
+Either we hit string beginning (ptr_lead == ptr_begin)
+Or we hit a space
+
+So when we reach the if (ptr_lead > ptr_begin):
+	If true: must have stopped at a space (the other possible condition)
+	If false: must be at string beginning
+
+explicit checks were redundant:
+the logic is already enforced by the while loop's exit conditions. 
+The simpler condition ptr_lead > ptr_begin captures both cases elegantly.

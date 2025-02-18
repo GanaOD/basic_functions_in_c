@@ -1,0 +1,38 @@
+during iteration from end of str back to beginning:
+
+Sliding pointer window:
+ptr_lead: scouts ahead to beginning of word (where peeking ahead reveals space/beginning of word) - so store this too: ptr_begin
+ptr_trail: stays at end of word, gets pointed to the end of each successive word
+
+pass ptr_lead to write syscall. length calculated through difference in ptrs
+	letting write handle the iteration internally rather than doing it manually (char by char, iterating ptr_lead back to _trail)
+
+Boundary conditions / delimiters for ptr_lead:
+	1.	space (start of current word): indicated by +ve return value of is_space
+	2.	string_begin (special case for 1st word)
+
+Boundary handling:
+	I choose:
+		point the window-pointers to 1st & last chars of each word
+		not to the spaces before/after a word
+
+
+CORE PATTERN:
+	ptr_lead finds start of word
+	ptr_trail finds end of word
+	write word
+	write space (this is the variation point)
+
+HIGHER-LEVEL:
+	incl. variation when str beginning reached: no final space:
+
+	while (we haven't reached string beginning)
+    move ptr_lead to word start
+    set ptr_trail to word end
+    write(word)
+    if (not at string beginning)
+        write(space)
+
+Putting space-writing after word: more natural flow
+	no need for special first-word handling (with flag variables, complicated conditionals)
+	handled by algorithm structure

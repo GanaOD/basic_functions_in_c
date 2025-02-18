@@ -1,33 +1,57 @@
 #include <unistd.h>
 
-int main(int argc, char **argv)
+// +ve if space
+// -ve if not space, i.e. char in word
+int	is_space(char c)
 {
-    if (argc != 2)
-        write (1, "\n", 1);
+	if (c == ' ' || c == '\t')
+		return (1);
+	else
+		return (0);
+}
 
-    char    *ptr_end = argv[1];
+void	rev_wstr(char *str)
+{
+	// store beginning of string for boundary condition 2
+	char	*ptr_begin = str;
 
-    // Navigate to end of str & store beginning with argv[1]
-    while (*ptr_end)
-        ptr_end++;
+	// iterate through str to end: to last char
+	while (*(str + 1))
+		str++;
 
-    // Introduce leading pointer for pointer-window for main logic
-    char    *ptr_lead = ptr_end;
+	// pointer window:
+	char	*ptr_lead = str;
+	char	*ptr_trail; // initialise later when last char of 1st word located
+	
+	while (ptr_lead >= ptr_begin)
+	{
+		while ((ptr_lead >= ptr_begin) && is_space(*ptr_lead)) // move through spaces
+			ptr_lead--;
+			// terminates pointing to last char of word
+		
+		ptr_trail = ptr_lead; // point trail to last char in word
 
-    // Main logic: decrement through string, write each word directly
-    while (ptr_lead > argv[1])  // Stop when we reach start
-    {
-        // Normal case: found a space
-        if (*(ptr_lead - 1) == ' ')
-        {
-            write(1, ptr_lead, ptr_end - ptr_lead);
-            write(1, " ", 1);
-            ptr_end = ptr_lead - 1;
-        }
-        ptr_lead--;
-    }
-    // Handle first word (ptr_lead now at start)
-    write(1, ptr_lead, ptr_end - ptr_lead);
+		while ((ptr_lead >= ptr_begin) && !is_space(*ptr_lead)) // iterate through to 1st char of word
+			ptr_lead--;
+			// terminates at space before 1st char of word (doch keine boundary handling wie geplant: char > char)
+			// so that ptr_lead is naturally positioned, ready for next iteration, moving from space
 
-    return (0);
+		// window holding word, now write
+		write (1, (ptr_lead + 1), (ptr_trail - ptr_lead));
+
+		if (ptr_lead > ptr_begin)
+			write (1, " ", 1);
+
+		else
+			return ;
+	}
+}
+
+int	main(int ac, char **av)
+{
+	if (ac == 2)
+		rev_wstr(av[1]);
+	else
+		write (1, "\n", 1);
+	return (0);
 }
