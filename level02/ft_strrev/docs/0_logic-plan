@@ -1,0 +1,29 @@
+operation to perform: involution 
+	if you apply it twice, you get back to where you started.
+
+symmetry:
+For a string of length n, performing exactly ⌊n/2⌋ swaps:
+	Position 0 swaps with position n-1
+	Position 1 swaps with position n-2
+	Position 2 swaps with position n-3
+	...and so on
+
+pattern: For any position i, it swaps with position (n-1-i)
+
+pivot point in the middle where the swaps meet. For odd-length strings, the middle character stays put - it's a fixed point of the transformation!
+
+
+IMPLEMENTATION
+
+Two-pointer technique: one starting from beginning, one from end
+Swap characters until pointers meet in middle
+No need for extra storage beyond a single char for swapping
+
+
+
+connection between mathematical & algorithmic symmetry:
+
+n-1-i captures:
+	n-1: End of string
+	-i: Moving inward from that end
+in one motion
