@@ -1,0 +1,22 @@
+Order of operations:
+
+List: A -> B -> C -> NULL
+
+Recursion path:
+Forward: A -> B -> C -> NULL  (building stack)
+Back:    C <- B <- A         (unwinding)
+
+
+But the relinking/freeing still works because:
+1. Each stack frame maintains its own 'current' node context
+2. When unwinding, each level still has valid pointers to:
+   - The node it needs to check/potentially free (current)
+   - The next node's position in memory (current->next)
+
+even though processing nodes from back to front during unwinding, 
+each node still has all information needed to:
+	Check if it should be removed (cmp call)
+	Relink its neighbors if needed (*begin_list = current->next)
+	Free itself (free(current))
+
+end result is functionally equivalent to an iterative front-to-back approach

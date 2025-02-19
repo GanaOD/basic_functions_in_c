@@ -1,0 +1,29 @@
+Expected file: ft_list_remove_if_addr.c
+Allowed functions: free
+
+Write a function called ft_list_remove_if_addr that removes from the passed list any element whose address matches the reference address.
+
+This differs from ft_list_remove_if in that it compares memory addresses directly instead of using a comparison function.
+
+
+It will be declared as follows:
+
+void ft_list_remove_if_addr(t_list **list_head, void *addr_ref);
+
+
+Make use of:
+
+typedef struct      s_list
+{
+    struct s_list   *next;
+    void            *data;
+}                   t_list;
+
+
+This variation:
+	Removes the comparison function parameter
+	Compares addresses directly instead of data content
+	Still needs to handle the same memory management and list relinking
+	Should still work recursively
+
+

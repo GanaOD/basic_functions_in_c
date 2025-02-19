@@ -1,0 +1,21 @@
+Historically, "indirection" in computing comes from mathematics and logic, where it means "not going directly to something, but going through intermediate steps." 
+Despite potential negative connotation in natural language, is a powerful and useful concept.
+
+
+Direct:      You → Target
+Indirect:    You → Reference → Target
+
+The term emphasizes that we're going through a middle step - a level of abstraction or reference - 
+rather than directly to the value. 
+In assembly language, this is literally called "indirect addressing."
+
+This "indirection" is empowering because it gives us flexibility and control. When we have:
+t_list **begin_list
+
+We can:
+	Change where the pointer points (*begin_list = new_location)
+	Access where it currently points (*begin_list)
+	Change the value it ultimately references (**begin_list)
+
+Each "level of indirection" adds a layer of control and flexibility. 
+Far from being misdirection, it's more like having additional control points or "handles" we can use to manipulate our data structures.

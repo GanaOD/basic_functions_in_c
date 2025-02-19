@@ -1,0 +1,43 @@
+param name list_head better indicates we're dealing with a pointer to a pointer to the head of the list. 
+matches the mathematical structure - at each recursive step, we're passing what could be considered the "head" 
+of the remaining sublist
+
+
+(in ft_list_remove_if) current:
+	Emphasizes the position/role in traversal
+	Communicates "this is where we are in the list"
+	Focuses on the node's place in the structure
+	More about location/navigation
+
+to_free:
+	Emphasizes the fate/action to be performed
+	Communicates "this memory needs to be deallocated"
+	Focuses on memory management
+	More about intention/operation
+
+
+In ft_list_remove_if_addr implementation, current makes more sense because:
+	using a recursive unwinding pattern
+	The variable represents a position in traversal
+	The node isn't immediately destined for deletion when created
+
+
+Compared with the to_free pattern:
+if (*begin_list == addr_ref)
+{
+    t_list *to_free = *begin_list;  // Immediately going to free this
+    *begin_list = (*begin_list)->next;
+    free(to_free);
+}
+
+Here to_free makes sense because its only purpose is to hold the node while we relink, before freeing.
+
+
+
+The variable names reflect different mental models:
+	current: Thinking about list structure and traversal
+	to_free: Thinking about memory management
+
+
+
+In ft_list_remove_if_addr implementation, don't need a separate traversal variable because we're working directly with begin_list for the recursion. We only create the to_free variable at the moment we've identified a node that needs deletion.

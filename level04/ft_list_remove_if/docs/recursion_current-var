@@ -1,0 +1,28 @@
+the role of current:
+t_list *current = *begin_list;
+
+a couple of critical purposes:
+
+1. Creates a local reference to the current node before I potentially modify where begin_list points to. 
+
+This is essential because:
+	might need to free this node
+	Once freed, can't access its next pointer
+	If not stored, would lose access to both the node and what comes after it
+
+
+2. Enables proper list relinking:
+
+need to preserve node relationships when removing elements
+
+current lets me bridge the gap when removing a node:
+
+Before: A -> B -> C
+current = B
+After:  A -> C
+
+
+3. Preserves recursive state:
+
+Each recursive call needs its own reference to "its" node
+current provides this local state at each level of recursion

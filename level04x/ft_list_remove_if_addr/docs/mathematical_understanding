@@ -1,0 +1,65 @@
+Building mental model of lists & recursion
+
+the mathematical structure of linked lists through the lens of recursion and self-reference.
+
+typedef struct s_list
+{
+    struct s_list   *next;  // Self-referential type
+    void            *data;
+}                   t_list;
+
+an example of a recursive data type in type theory. Mathematically expressable:
+
+L = 1 + (D × L)
+
+Where:
+	L represents the type of lists
+	D represents the type of data elements
+	1 represents the empty list (NULL)
+	× represents product type (struct fields)
+	+ represents sum type (either empty or node)
+
+
+This recursive equation captures that a list is either:
+
+Empty (NULL)
+
+OR a node containing:
+	data of type D
+	AND another list L
+
+
+
+This is similar to natural numbers in Peano arithmetic:
+
+N = 1 + N
+
+(a natural number is either zero or successor of another natural)
+
+
+
+how this mathematical structure enables our recursive algorithms to work? 
+
+The recursion is based on this fundamental principle:
+
+Each node in our list fully encapsulates the concept of "list" again through its next pointer.
+
+like Russian dolls, but in an algebraic sense:
+L = 1 + (D × L)
+  = 1 + (D × (1 + (D × L)))
+  = 1 + (D × 1) + (D × D × L)
+  ...
+
+This infinite expansion maps perfectly to how we can have lists of any length:
+
+NULL                    // Empty list (1)
+Node -> NULL           // Single node (D × 1)
+Node -> Node -> NULL   // Two nodes (D × D × 1)
+
+my recursive function ft_list_remove_if works because:
+	The base case (NULL) maps to the '1' in equation
+	Each recursive call handles one 'D × L' product
+	The unwinding matches the algebraic structure in reverse
+
+
+This is why &(current->next) works so elegantly - it's passing the 'L' part of 'D × L' to the next recursive call

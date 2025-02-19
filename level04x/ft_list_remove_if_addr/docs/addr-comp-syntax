@@ -1,0 +1,55 @@
+&((*list_head)->next)
+
+at first sight seemed doppeltgemoppelt
+
+
+parsed:
+	*list_head							Dereference to get the pointer to the struct
+	(*list_head)->next			Access the 'next' member of that struct
+	&(...)									Get the address of that 'next' pointer
+
+
+
+need the address of 'next' because ft_list_remove_if_addr takes a pointer-to-pointer parameter. 
+This allows modification of the 'next' pointer itself if node-relinking necessary.
+
+Without the &, we'd just be passing the value of 'next' (which is a pointer), 
+but function needs to be able to modify where 'next' points to, hence we need its address.
+
+
+If we just passed the pointer value (t_list *), we could follow it to the node
+But when we need to relink, we need to change where the previous node's pointer points to
+Hence we need the address of that pointer itself (t_list **)
+
+
+
+a classic pattern in C linked list operations where we need to modify links. It's similar to why we often write functions like:
+void add_to_list(t_list **head, void *data)
+
+Instead of:
+cCopyvoid add_to_list(t_list *head, void *data)  // Can't modify the head pointer!
+
+
+
+
+from a mathematical perspective:
+
+A pointer can be thought of as a mapping from a memory address to a value:
+p: Address → Value
+
+A pointer-to-pointer adds another level of indirection, creating a composition of mappings:
+pp: Address → (Address → Value)
+
+
+In category theory terms, this is like a functor - it's a mapping between spaces that preserves structural relationships. The double pointer t_list ** creates a two-level mapping:
+
+First mapping: From the outer address to an inner address
+Second mapping: From that inner address to the actual list node
+
+When we do operations like &((*list_head)->next), we're composing and decomposing these mappings:
+
+*list_head: Applies the first mapping to get an address
+->next: Follows a structural relationship at that level
+&: Creates a new mapping to that location
+
+This forms a commutative diagram where we can follow different paths to reach the same result - either directly through pointer arithmetic or through these sequential mappings.
