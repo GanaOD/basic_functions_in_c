@@ -1,0 +1,5 @@
+need to be separate if statements (not else if) because we need to explore in all valid directions from each point.
+
+
+If else if were used, function would only explore in one direction from each point
+This would miss large portions of the connected area that needs to be fill

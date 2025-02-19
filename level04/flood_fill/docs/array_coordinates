@@ -22,3 +22,23 @@ This was efficient for early computers that accessed memory sequentially.
 Meanwhile, the (x,y) coordinate convention comes from mathematics/Cartesian coordinates, where:
 	x traditionally represents horizontal movement (left/right)
 	y represents vertical movement (up/down)
+
+
+
+
+
+
+ACCESSING struct members via arithmetic (recursive logic)
+
+e.g. current_position.y - 1
+
+Computational perspective, operations necessary:
+	first need value stored in the y member
+	perform arithmetic on that value
+	use that result to index into the array
+
+The struct member access and array indexing are discrete operations at the machine level
+even though mathematically just trying to express "the row above the current position".
+
+reflects a gap between mathematical abstraction and computer implementation - 
+can't directly access a struct member offset by an arithmetic operation, have to do it in steps.

@@ -1,0 +1,20 @@
+in recursive calls:
+
+compound literal like: (t_point){x, y}
+C99 feature
+creates a temporary object with no name (hence "anonymous") 
+	that exists only for the duration of the expression it appears in
+
+Computationally:
+	Memory-wise, it's created in the current stack frame
+	without polluting namespace
+
+Like a morphism in cat. theory, carrying structure between objects 
+without needing persistent identity itself
+
+
+In recursion:
+	Each recursive call creates a new stack frame
+	The compound literal exists only during the function call setup
+	Perfect for recursion because often need temporary values just to pass to the next recursive call
+	Once the call is made, don't need that specific position anymore
