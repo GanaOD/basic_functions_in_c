@@ -1,0 +1,37 @@
+
+Relinking: no need to to separately track the previous node or do any extra pointer manipulation. 
+The recursion naturally gives us access to the exact pointer we need to modify.
+
+(*begin_list)->next 		gets the next node's address from our node to remove
+*begin_list = 					assigns this address to the previous node's "next" pointer
+begin_list 							is a pointer to the previous node's "next" pointer
+
+
+not working with the next node's "next" pointer - working with the previous node's "next" pointer, 
+which I have direct access to due to recursive strategy of passing &((*begin_list)->next).
+
+
+
+the elegance of the solution emerges from how it maps to fundamental abstract patterns:
+
+
+Structural Recursion and Induction
+	We're exploiting the recursive nature of linked lists - each node is a microcosm of the whole list
+	The unwinding phase maps beautifully to mathematical induction: solving from the base case back
+
+
+Pointer Indirection as Graph Transformation
+	At a higher level, we're not just manipulating memory - we're transforming a directed graph
+	The double pointer (t_list **) gives us the power to modify the graph's edges (links) directly
+	When we write *begin_list = (*begin_list)->next, we're redirecting edges in this graph
+
+
+Conservation of Information
+	The solution preserves all necessary information at each step without additional storage
+	The recursion stack implicitly maintains the path back
+	The double pointer gives us exact access to the link we need to modify
+
+
+Temporal vs. Spatial
+	Rather than storing state in space (extra variables), we use the temporal nature of recursion
+	The unwinding phase creates a natural "time machine" giving us access to both past and future nodes

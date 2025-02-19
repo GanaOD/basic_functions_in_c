@@ -1,0 +1,12 @@
+Comparison with ft_list_remove_if: 
+struct uses void *data ∴ a generic linked list - it can store pointers to any data type. 
+
+This is more flexible but requires:
+	Type casting when accessing the data
+	A comparison function (cmp) to check equality since we don't know the data type
+
+
+In ft_list_remove_out_of_range, the struct uses int data which means:
+	It's specifically for storing integers (not pointers to integers)
+	We can directly compare values without type casting
+	No comparison function needed since we know we're working with integers

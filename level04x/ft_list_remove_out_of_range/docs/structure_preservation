@@ -1,0 +1,44 @@
+
+when declaring temporary variable:
+
+t_list *to_free = *list_head;
+
+
+to_free needs to be a t_list* (pointer to t_list structure) because:
+
+*list_head points to a complete t_list structure containing:
+	next pointer (struct s_list *)
+	data field (int in this case)
+
+
+can't use a simpler type because:
+char *to_free = *list_head;     // Would lose structure information
+int *to_free = *list_head;      // Can't hold both next and data
+
+
+need the complete structure because:
+	need to access its members (like ->next) for relinking
+	When we free(to_free), we need to free the entire structure
+
+
+
+temporary variable must be able to hold everything that's temporarily being "setting aside" before freeing. 
+Since dealing with entire nodes from a linked list, it must be of type t_list*.
+
+
+
+higher-level perspective: this illustrates fundamental concepts in computation and mathematics:
+
+
+Structure Preservation
+	In category theory terms, we need a variable that preserves the structure of what it's holding
+	Just like in mathematics where you can't map a complex structure to a simpler one without losing information
+	The type system enforces this mathematical truth: you can't collapse a structure (t_list) into a primitive type (char/int)
+
+
+
+Memory as Address Space Mapping
+			Memory Space → Structure Space
+	t_list * defines a mapping from memory addresses to structured data
+	This is like a mathematical function that maps from one space (memory addresses) to another space (structured data)
+	The type system ensures this mapping is well-defined
