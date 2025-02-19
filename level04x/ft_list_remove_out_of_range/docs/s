@@ -1,0 +1,32 @@
+Assignment: ft_list_remove_out_of_range
+Expected file: ft_list_remove_out_of_range.c
+Allowed functions: free
+
+
+Write a function called ft_list_remove_out_of_range that removes any nodes from the passed list whose integer values fall outside the given range (boundaries inclusive).
+
+
+It will be declared as follows:
+void ft_list_remove_out_of_range(t_list **begin_list, int min, int max);
+
+
+Make use of:
+typedef struct s_list
+{
+	struct s_list *next;
+	int           data;
+} t_list;
+
+
+The function must:
+	Remove any node whose data value is less than min
+	Remove any node whose data value is greater than max
+	Free the memory of any removed node
+	Maintain the list's linking for remaining nodes
+	Handle NULL parameters appropriately
+
+
+Example:
+For a list containing: 1->5->3->8->2->9->4
+With min=2, max=6
+Should result in: 5->3->2->4

@@ -1,0 +1,7 @@
+lowercase chars remapping: ((*str - 'a' + 1) % 26)
+
+subtract 'a' to get position in alphabet (0-25)
+Add 1 to shift forward / rotate 1 char (as per subject)
+Take modulo 26 to handle wraparound (creates a cyclic group of size 26)
+	e.g. 'z' wraps around to position 0 == 'a'
+Add 'a' maps back into ASCII space
