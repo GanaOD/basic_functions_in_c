@@ -1,0 +1,9 @@
+The structure should be:
+
+First check base cases:
+	These are your "exit conditions" that prevent infinite recursion
+	The function first checks these before doing any recursive calls
+
+
+Only after none of the base cases match:
+	Then we do the recursive call

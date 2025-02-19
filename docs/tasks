@@ -1,3 +1,6 @@
+is_power_of_2
+	bitwise operations
+
 ft_rrange
 	bitwise operations for int diff
 

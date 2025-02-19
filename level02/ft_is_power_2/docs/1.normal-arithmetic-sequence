@@ -1,0 +1,42 @@
+what it means for a number to be a power of 2 mathematically:
+
+Powers of 2 form a sequence: 2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16...
+
+The pattern:
+	Each number in this sequence is the previous number multiplied by 2
+	Going backwards: each power of 2, when repeatedly divided by 2, will eventually reach exactly 1
+	Any number that isn't a power of 2 will hit an odd number other than 1 when repeatedly divided by 2
+
+The recursive essence becomes clear:
+	Base case: If we reach 1, it was a power of 2
+	Base case: If we reach an odd number other than 1, it wasn't a power of 2
+	Recursive step: Keep dividing by 2 until we hit a base case
+
+
+
+
+Any number n can be divided by 2 repeatedly until you hit:
+	Either 1 (success case - it was a power of 2)
+	Or some odd number > 1 (failure case - it wasn't a power of 2)
+
+
+
+This is mathematically guaranteed because:
+	Powers of 2 will divide down cleanly: 16 → 8 → 4 → 2 → 1
+	Non-powers of 2 will eventually hit an odd factor: 12 → 6 → 3 (odd, stop!)
+
+
+
+This pattern relates to several fundamental mathematical concepts:
+
+Prime Factorization - specifically the process of repeatedly dividing by 2 is revealing the power of 2 in a number's prime factorization
+
+Binary Numbers - there's a deep connection here because powers of 2 have exactly one '1' bit in their binary representation
+
+In recursive algorithm design, this is a form of "decrease and conquer" strategy - where we keep reducing the problem size (by dividing by 2) until we hit fundamental base cases
+
+
+
+In number theory, this process of repeatedly dividing by 2 until reaching an odd number is sometimes called "2-adic valuation" or "2-adic order" - it tells us the highest power of 2 that divides a number.
+
+This kind of recursive pattern that decomposes a number into its prime power components is fundamental in multiplicative number theory. When we restrict it to just powers of 2, we're essentially checking if the 2-adic valuation gives us a "pure" power of 2.
