@@ -1,0 +1,29 @@
+interesting property: applying rot_13 twice returns the original text. This suggests symmetry.
+
+
+Looking at the alphabet divided in half:
+a b c d e f g h i j k l m
+n o p q r s t u v w x y z
+Each letter maps to the one 13 positions away.
+
+
+using the same modular arithmetic approach from rotone, just changing the shift from 1 to 13:
+((c - 'a' + 13) % 26) + 'a'
+
+
+Why does ROT13 work as its own inverse? How does the modular arithmetic capture this property?
+
+
+13 is exactly half of 26 (modulus). This means:
+
+If we shift by 13 twice: (x + 13 + 13) % 26 = (x + 26) % 26 = x
+
+
+can visualize it as folding the alphabet in half:
+a -> n   n -> a
+b -> o   o -> b
+c -> p   p -> c
+...
+
+Every letter maps to one exactly 13 spaces away, and that letter maps back to the original. 
+This creates a perfect pairing where each shift of 13 reverses the previous shift of 13.
