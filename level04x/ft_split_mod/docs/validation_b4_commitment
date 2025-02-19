@@ -1,0 +1,25 @@
+// Less careful approach - my original:
+if (state_transition_detected)
+{
+    seg_count++;        // Commit to counting immediately
+    process_segment();   // Only then verify/process
+}
+
+// "Measure twice, cut once":
+if (state_transition_detected)
+{
+    process_segment();   // First verify/process fully
+    seg_count++;        // Only then commit to counting
+}
+
+
+validation before commitment:
+	First "measure": detect potential segment
+	Second "measure": process it fully, confirm it's valid
+	"Cut": only then increment our count
+
+
+This relates to defensive programming and state integrity:
+	Don't commit to state changes (counting) until we're certain
+	Validate complete operations before updating counters
+	Avoid having to "undo" counts if something fails
