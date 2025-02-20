@@ -7,6 +7,7 @@ char	*ft_strrev(char *str)
 	char	*str_from_start = str;
 
 	// set up initial end ptr position
+	// to last char, not \0
 	char	*str_from_end = str;
 	while (*(str_from_end + 1))
 		str_from_end++;
