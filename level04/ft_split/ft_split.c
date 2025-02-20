@@ -84,10 +84,7 @@ char    **ft_split(char *str)
     char    **words = malloc(sizeof(char *) * (word_count + 1));
 
     if (!words)
-    {
-        free (words);
         return (NULL);
-    }
 
 
     // 2nd pass through string: word processing - each word gets space allocated & is then copied over
@@ -96,7 +93,7 @@ char    **ft_split(char *str)
     // making use of state machine logic from 1st pass
     //      - ptr_lead iterates through first word. When it moves into a space (!in_word but in_word_flag still 1), before continuing to iterate through space with in_word_flag = 0, process this first word
     //      - once this word has been processed, ptr_lead moves through space(s) to next word. When it points to 1st char of new word, set ptr_trail to this position, ensure state change & iterate through, repeating previous stage of process
-    // Overall condition: this repeats until end of str (while (ptr_lead)
+    // Overall condition: this repeats until end of str (while (ptr_lead))
 
     // Reset
     ptr_lead = str; 

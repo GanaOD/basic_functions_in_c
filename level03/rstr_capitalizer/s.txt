@@ -14,6 +14,7 @@ A letter is a character in the set [a-zA-Z]
 
 If there are no parameters, display \n.
 
+
 Examples:
 
 $> ./rstr_capitalizer | cat -e
