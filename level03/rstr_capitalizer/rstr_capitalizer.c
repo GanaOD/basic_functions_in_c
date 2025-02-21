@@ -1,6 +1,5 @@
 #include <unistd.h>
 
-// failed exam 1st time as I defined space to be only either ' ' || '\t'
 int	is_space(char c)
 {
 	if (c == ' ' || (c >= 9 && c <= 13))

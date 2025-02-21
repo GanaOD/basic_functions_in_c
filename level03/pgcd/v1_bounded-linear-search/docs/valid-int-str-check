@@ -1,0 +1,58 @@
+if not known whether int strings "fit in an int":
+
+
+Would need in main function:
+// if int > INT_MAX, atoi silently overflows
+	// ∴ validate string representation before conversion
+	if ((!validate_int_str(s1)) || (!validate_int_str(s2)))
+		return ;
+
+
+with helper:
+
+// assuming signed 32-bit int, INT_MAX is 2147483647
+int	validate_int_str(char *s)
+{
+	int len = 0;
+	
+	if (!s || *s < '1' || *s > '9')  // Must start with 1-9 in this case
+			return 0;
+			
+	while (s[len]) // Get length while checking digits
+	{
+			if (s[len] < '0' || s[len] > '9')
+					return 0;
+			len++;
+	}
+	
+	if (len > 10)
+			return 0;
+
+	if (len < 10)
+			return 1;
+			
+	// Compare 10-digit string with INT_MAX string
+	return (strcmp(s, "2147483647") <= 0);
+	// common C idiom: using the comparison operator on the function's return value to directly get a boolean result (0 or 1)
+}
+
+
+
+about defining what constitutes a valid string representation of a natural number in base-10 (decimal) positional notation.
+Mathematically, we're saying:
+
+Let s be a string of length n
+For any position i where 0 < i < n
+The character at s[i] must be an element of the set {0,1,2,3,4,5,6,7,8,9}
+Or in ASCII/character terms: the character's value must be in the closed interval ['0','9']
+
+This relates to:
+
+Set theory (valid digit set)
+Number systems and place value
+The concept of a formal language/grammar where we're defining valid strings
+
+From a pure mathematical view, we're validating that the string represents a number in the formal language:
+
+L = {1,2,3,4,5,6,7,8,9}{0,1,2,3,4,5,6,7,8,9}*
+Where * is the Kleene star operation

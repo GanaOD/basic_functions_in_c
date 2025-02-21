@@ -1,0 +1,46 @@
+failed exam as I defined space to be only either ' ' or '\t'
+
+This experience touches on fundamental principles about information and computation:
+
+
+The Nature of Delimiters
+
+At a higher level, we're dealing with the concept of boundaries and separation
+A word is fundamentally a unit of meaning that must be separated from other units
+In computing, this separation manifests through various control characters - not just the visible space character
+The ASCII control characters < 32 are all, in essence, different forms of "space" - they represent gaps, breaks, boundaries in information flow
+
+
+
+The Gap Between Specification and Reality
+
+The subject says "spaces/tabs" but the deeper truth is "word delimiters"
+This mirrors a fundamental challenge in computing and engineering: specifications are often incomplete representations of the underlying reality
+not "space character" but "separation/boundary"
+
+
+
+First Principles Thinking
+
+Instead of asking "what characters constitute space?", the higher-level question is "what constitutes a word boundary in computing?"
+This leads naturally to considering all control characters that can serve as delimiters
+The mathematical elegance of c >= 9 && c <= 13 captures a whole family of related concepts
+
+
+
+Security Mindset Connection
+
+ hackers often exploit the gap between specification and implementation
+Many vulnerabilities arise from assuming a narrow interpretation when the system actually accepts a broader range of inputs
+
+
+
+
+For future practice:
+
+When dealing with text processing, always consider the full ASCII character set
+Look beyond literal interpretations to grasp the underlying conceptual model
+Think in terms of information boundaries and flow, not just visible characters
+
+
+The blunder wasn't technical - it was conceptual. The lesson is about seeing through the surface-level specification to grasp the deeper pattern of what constitutes separation in information systems.

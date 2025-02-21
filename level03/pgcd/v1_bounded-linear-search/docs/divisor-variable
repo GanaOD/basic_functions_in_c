@@ -1,0 +1,9 @@
+originally when I declared it & assigned the smaller int to it, I called it beginning_int / similar
+
+but through the life of this algo, it represents 3 things:
+	Initially: the smaller of our two numbers (so starting pt of search)
+	During search: the current potential divisor we're testing
+	When found: our highest common divisor
+
+More general name "divisor" maintains its mathematical meaning at each stage:
+it's always a number we're considering in terms of its divisibility properties
