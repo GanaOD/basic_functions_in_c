@@ -1,0 +1,10 @@
+linked list: a meta-structure:
+	a way of organizing data where each element knows about the next one
+
+self-referential nature (struct referring back to itself) is crucial:
+	this recursive definition allows the list to be arbitrarily long
+
+
+terminated by NULL pointer: see boundary-marking_termination-signalling
+
+

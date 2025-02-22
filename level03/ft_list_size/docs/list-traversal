@@ -1,0 +1,9 @@
+Each node in the list is a struct
+That struct has a member called 'next'
+So when we say begin_list->next, we're accessing the 'next' member of the node that begin_list currently points to
+even more explicit:
+	We're at the current node (pointed to by begin_list)
+	This current node contains a 'next' pointer
+	We follow that pointer to reach the next node
+
+The movement is always based on information in our current node.

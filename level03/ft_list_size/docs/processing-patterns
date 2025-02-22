@@ -1,0 +1,20 @@
+In string processing: *str (process current char) then str++ (move to next)
+
+In list counting: count++ (process current node) then begin_list = begin_list->next (move to next)
+
+
+The pattern is indeed the same:
+	Process current element
+	Move to next element
+
+
+It's just that in this case, "processing" means incrementing a counter. 
+
+The fundamental pattern of traversal remains the same whether we're:
+	Counting elements
+	Transforming data
+	Searching for values
+	etc.
+
+
+pattern clarity cuts through superficial syntax differences (++)
