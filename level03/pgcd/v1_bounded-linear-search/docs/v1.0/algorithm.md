@@ -99,3 +99,18 @@ But in a program, we have to carefully consider:
 	Where values are captured/returned
 
 A single off-by-one error in these implementation details can make a mathematically correct algorithm fail in practice. This is why understanding these patterns deeply - like how loop termination interacts with when we check/process values - is crucial for reliable programming.
+
+
+
+
+
+
+# HIGH LEVEL
+
+Algorithm Description:
+It's a "Bounded Linear Search" or "Descending Linear Search" for the Greatest Common Divisor (GCD)
+Starting from the smaller of the two numbers
+Testing each potential divisor from highest to lowest until finding one that divides both numbers
+Mathematically: Finding the largest k where k|a and k|b (k divides both a and b)
+
+This is an intuitive but inefficient approach - O(n) complexity where n is the smaller input number.

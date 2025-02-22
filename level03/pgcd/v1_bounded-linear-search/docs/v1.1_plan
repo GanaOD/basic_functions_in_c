@@ -1,0 +1,91 @@
+Thinking through:
+
+
+# PHASE 1:
+
+HCD calculation: this prog is fundamentally about arithmetic operations
+
+so first convert 2 strings > 2 ints
+	atoi
+		interpreting subj to mean they they will fit in an int
+
+
+no algo comes to mind, so how to calculate HCF with iteration...?
+
+key insight:
+	HCD of both nrs. cannot be > the smaller one
+	could be equal to it!
+	so begin looking from here
+
+idea:
+beginning with this start point,
+decrement to 1
+examine every nr at a time - is it a factor of both ints?
+the first one met must be HCF
+
+"display" this
+is int form
+can use printf
+
+
+
+# PHASE 2: more considerations
+
+1. How do I know if a number divides another? What's the mathematical definition?
+
+2. Could I miss the HCD with this approach? Why?
+
+3. Is there a way to reduce our search space beyond just "smaller number down to 1"?
+
+Consider:
+What happens when numbers are very large?
+Are we doing redundant checks?
+Could patterns in divisibility help us?
+What's the relationship between HCD and factors?
+
+
+
+1. Division and Modulo:
+
+At the most fundamental level, division is about finding how many times one number can be "subtracted" from another
+If a divides b perfectly, we can express this as: b = a * k for some integer k
+Modulo (remainder) is indeed expressing this: when b ÷ a = k remainder r, we write b = a * k + r
+The C modulo operator % is directly implementing this mathematical definition
+At assembly level, division/modulo often reduces to repeated subtraction or bit operations, but the mathematical meaning remains the same
+So yes, (int % possible_factor == 0) is capturing the pure mathematical concept of divisibility
+
+
+
+2. Why can't I miss HCD by checking downwards?
+
+Attempt at a proof by contradiction:
+	Let's say d is the HCD
+	Assume we missed d using our downward check
+	This means we found some number c < d that divides both numbers
+	But if c divides both numbers, any common divisor bigger than c must be one we checked
+	Since d is bigger than c, we would have found it in our check before reaching c
+	This contradicts our assumption that we missed d
+	Therefore, we cannot miss the HCD
+
+
+
+3. Ideas for algorithm to reduce search space:
+
+check whether the given integers are odd or even 
+	if even 1 of them is odd, we wouldn't have to check the even numbers when decrementing
+	if they are both even, we wouldn't have to check the odd numbers 
+so that would mean a slightly more nuanced decrementation logic (than simply --, 1 at a time), but less searching
+
+
+AI helping me think from here > deriving Euclid's algo...see v2
+
+
+
+# IMPLEMENTATION
+(again of bounded linear search)
+
+Insight from last time: printf & write buffering-related:
+	printf is buffered by default, write is unbuffered
+
+So I will use only printf in this program to keep the output consistent
+(all output would go through the same buffering mechanism)
