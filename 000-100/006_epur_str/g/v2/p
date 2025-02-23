@@ -1,0 +1,23 @@
+Core pattern
+How to express the underlying mathematical/logical structure of this problem? 
+What are the key states or transitions to handle?
+
+Re. state transitions: consider the string "  hello   world  "
+What are the meaningful state changes as I move through this string
+and how do they relate to output requirements?
+	key states: in a space or in a word
+	key transitions: space > word, space > end of str, word > space, word > end of str
+
+For the state machine, when exactly are chars to be outputted?
+	in word state (every char until end of word)
+	or transition: space > word, where 1 space is outputted (except with leading space)
+
+Aim: natural logic flow, no need for state machine flags
+
+
+Re. space detection:
+Not just ' ' and '\t': including standard chars tested for by isspace 
+\t, \n, \v, \f, \r, ' ' 
+
+
+
