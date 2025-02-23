@@ -4,10 +4,11 @@
 
 char	*ft_itoa(int nbr)
 {
-	int	digit_count = nbr; // to preserve original
 	int	len = 1;
 
+	int	n_len = nbr; 				// to calculate nbr length
 	int	n_work = nbr; 			// working copy of nbr for malloc'd str
+	// separation important: each operation (len counting & digit extraction) consumes the number it works with
 	
 	int	negative_flag = 0; // set to 1 to track negative nbr
 	
@@ -31,7 +32,7 @@ char	*ft_itoa(int nbr)
 			// special case: INT_MIN * -1 doesn't fit in int
 			if (nbr == INT_MIN)
 			{
-				result = malloc(10 + 1);
+				result = malloc(10 + 1 + 1); // 10 digits, 1 minus sign, 1 null determiner
 				if (!result)	return NULL;
 				result[0] = '-', result[1] = '2', result[2] = '1', result[3] = '4',
 				result[4] = '7', result[5] = '4', result[6] = '8', result[7] = '3',
@@ -41,7 +42,7 @@ char	*ft_itoa(int nbr)
 			else
 			{
 				// make both working copies of nbr +ve for upcoming logic
-				digit_count = digit_count * -1;
+				n_len = n_len * -1;
 				n_work = n_work * -1;
 				negative_flag = 1; 
 			}
@@ -50,10 +51,10 @@ char	*ft_itoa(int nbr)
 
 		// for positive nbrs:
 		// calculate nr. of digits == nr. of chars in str
-		while (digit_count >= 10)
+		while (n_len >= 10)
 		{
 			len++;
-			digit_count = digit_count / 10;
+			n_len = n_len / 10;
 		}
 		// special case: original nbr negative: 1 more space needed for minus sign
 		if (negative_flag == 1)

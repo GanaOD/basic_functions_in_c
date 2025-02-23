@@ -39,3 +39,6 @@ Plan:
 Iterate to count digits
 Malloc with this length + 1
 Fill string from right to left using modulo
+
+
+Non-elegant approach but understandable
