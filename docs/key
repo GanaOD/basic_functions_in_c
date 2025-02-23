@@ -1,10 +1,42 @@
-b				brief / subject / specification / description...problem to solve
+Organisation: numerical
+more or less corresponding to order of first time working on problem
 
-p				plan, design considerations
 
-r				reflection: insights, what I learned: brief descriptions of ideas, concepts, theory...
-										ideas for future exploration
+/d			docs
+/g			ganaod: my work
+/o			other work (person, organisation): alternative implementations 
 
-v1
-vx
-vsec
+
+
+/d:
+	b				brief / subject / specification / description:	problem to solve
+	r				synthesis of insights across all versions
+
+
+
+/g:
+		/v		versions:
+
+				v1			1st run through problem. Solution/implementation that works
+					basic functionality, "gets the job done", "good enough"
+					not aiming for mathematical elegance, advanced computational abilities
+				vx			explore: exploring mathematics, computation
+					e.g. alternative, more advanced data structures & algorithms
+					experimental: can be creative, can have fun
+					maybe aim for greater mathematical purity...
+					these can also be numbered for incremental work, e.g. vx1 (a little exploration), vx2 (more advanced...)
+				vsec		security-hardened: to study security principles
+
+
+						within each /v:
+							p				plan, design considerations
+							s				solve: actual code
+							r				reflection: insights, what I learned: brief descriptions of ideas, concepts, theory...
+																ideas for future exploration
+
+
+
+/o:
+	/name/handle:
+				s				solve / solution: their code
+				a				analysis, incl. insights gained...

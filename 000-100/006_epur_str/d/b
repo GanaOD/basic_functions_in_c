@@ -13,6 +13,7 @@ by the start/end of the string.
 If the number of arguments is not 1, or if there are no words to display, the
 program displays \n.
 
+
 Example:
 
 $> ./epur_str "vous voyez c'est facile d'afficher la meme chose" | cat -e
