@@ -1,0 +1,14 @@
+different logical structure:
+v1:
+Instead of separating first word + subsequent words
+	tracks "should I print a space before this character?" throughout the entire string
+
+
+key difference:
+	v1: Thinks in terms of "words" as complete units
+	v2: Thinks in terms of individual characters and their transitions
+
+
+Both are valid approaches. 
+The flag version might be considered more "stateful" but it has the advantage of being more linear in its processing - 
+it makes a single pass through the string making local decisions at each character.

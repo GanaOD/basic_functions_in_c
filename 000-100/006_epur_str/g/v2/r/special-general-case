@@ -1,0 +1,32 @@
+DESCRIPTION:
+Had code for:
+	state: in space
+	transition: in space > in word
+		stete: in word
+
+But not for special case:
+	between leading space & first word, no space
+	space between words
+
+
+
+Chose logical structure with pattern that maps to concept: 
+"special case followed by general case" or "base case and inductive step" 
+similar to how mathematical induction works.
+
+
+In this solution, essentially saying:
+	Handle the "initial condition" (first word) separately
+	Then handle the "general pattern" (space + word) for all subsequent cases
+
+
+A powerful pattern. Shows up in:
+	Mathematical induction (base case + inductive step)
+	Recursive algorithms (base case + recursive case)
+	State machine initialization (initial state + transition rules)
+	Series and sequences (first term + general term)
+
+This approach often leads to cleaner, more mathematically elegant solutions than using flags 
+because it follows the natural structure of the problem domain. 
+Instead of artificially tracking state with a boolean, we express the inherent mathematical structure: 
+"first element, then repeating pattern."

@@ -1,0 +1,17 @@
+General handling: after skipping spaces
+
+if (*str)
+
+implicitly checking for a non-space character here:
+after skipping all spaces in the preceding loop, we can only be in one of two states:
+
+	End of string (*str == '\0')
+	Start of a word (!is_space(*str))
+
+could write if (!is_space(*str) && *str),
+this would be redundant: any non-null char here must be a non-space
+
+an example of letting the logical structure of code express the constraints naturally, 
+rather than explicitly stating conditions that are already guaranteed by the control flow. 
+an application of the mathematical principle of invariants - 
+conditions that are maintained/guaranteed at specific points in our program.

@@ -14,10 +14,12 @@ For the state machine, when exactly are chars to be outputted?
 
 Aim: natural logic flow, no need for state machine flags
 
+Space between words:
+	A flag variable to track if we've written a word?
+	Restructure the logic to handle the first word specially, then loop for subsequent words?
+		yes, to minimise state 
+
 
 Re. space detection:
 Not just ' ' and '\t': including standard chars tested for by isspace 
 \t, \n, \v, \f, \r, ' ' 
-
-
-

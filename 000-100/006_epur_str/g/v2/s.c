@@ -12,24 +12,38 @@ void	epur(char *str)
 {
 	if (!str)
 		return ;
+	
+	// SPECIAL CASE
 
-	// state: in space
-	// 	leading / in between words / trailing
-	// action: skip
+	// state: in leading space
 	while (is_space(*str))
 		str++;
 
-	// transition: space > word
-	if (!is_space(*str) && *str)
+	// state: first word (if exists)
+	while (*str && !is_space(*str))
 	{
-		// state: in word
-		while (*str && !is_space(*str))
-		{
-			write (1, str, 1);
-			str++;
-		}
+		write(1, str, 1);
+		str++;
 	}
 
+	// > GENERAL PATTERN: subsequent words
+	while (*str)
+	{
+		// Skip spaces
+		while (is_space(*str))
+				str++;
+		
+		// If another word found
+		if (*str)
+		{
+				write(1, " ", 1);  // Space between words
+				while (*str && !is_space(*str))
+				{
+						write(1, str, 1);
+						str++;
+				}
+		}
+	}
 }
 
 int	main(int ac, char **av)
