@@ -1,0 +1,27 @@
+Out of habit, created an overall while (*str)
+
+Unnecessary: 2 specific while loops handle all cases, incl. end of str
+
+
+
+logical structure in string traversal:
+
+Core concept: String traversal is about state transitions
+	We're moving through states: leading_spaces → word → done
+	Each state has its own termination conditions
+	We don't always need a global wrapper if our state transitions handle all cases
+
+
+Logical structure principles:
+	Each distinct state/phase can have its own loop with specific conditions
+	Conditions should combine:
+		State continuation (*str - more chars to process)
+		State-specific rules (is_space, !is_space, etc.)
+	Exit happens naturally when either condition fails
+
+
+Common mistake patterns:
+	Over-nesting: Adding unnecessary layers of control flow
+	Over-generalizing: Using a "catch-all" outer loop when specific state handling is clearer
+	Rigid patterns: Thinking we must always use if-else inside while, or vice versa
+

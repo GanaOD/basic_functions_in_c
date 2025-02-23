@@ -1,0 +1,41 @@
+Assignment name  : checkmate 
+Expected files   : *.c, *.h
+Allowed functions: write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that takes rows of a chessboard as arguments and checks if your 
+King is in a check position.
+
+Chess is played on a chessboard, a squared board of length 8-squares with 
+specific pieces on it : King, Queen, Bishop, Knight, Rook and Pawns.
+For this exercise, you will only play with Pawns, Bishops, Rooks and Queen...
+and obviously a King.
+
+Each piece has a specific method of movement, and all patterns of capture are
+detailed in the examples.txt file.
+
+A piece can capture only the first ennemy piece it founds on its capture
+patterns.
+
+The board will have a variable size but will remain a square. There's only one King
+and all other pieces are against it. All other characters except those used for
+pieces are considered as empty squares.
+
+The King is considered as being in a check position when an other enemy piece can
+capture it. When it's the case, you will print "Success" on the standard output
+followed by a newline, otherwise you will print "Fail" followed by a newline.
+
+If there are no arguments, the program will only print a newline.
+
+
+Examples:
+
+$> ./chessmate '..' '.K' | cat -e
+Fail$
+$> ./chessmate 'R...' '.K..' '..P.' '....' | cat -e
+Success$
+$> ./chessmate 'R...' 'iheK' '....' 'jeiR' | cat -e
+Success$
+$> ./chessmate | cat -e
+$
+$>
