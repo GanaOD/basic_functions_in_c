@@ -1,0 +1,11 @@
+PROBLEM
+During train-of-thought implementation, put fizzbuzz portion after fizz & buzz
+
+INSIGHT
+If I have multiple conditions where one is more specific and encompasses other conditions,
+check the most specific one first
+otherwise logical short-circuiting (final condition never reached)
+
+fizzbuzz:
+A number divisible by both 3 AND 5 is a more specific condition
+a subset of "divisible by 3" and "divisible by 5"
