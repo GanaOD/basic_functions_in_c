@@ -1,0 +1,13 @@
+# Why s2 the control condition?
+
+What are we fundamentally doing?
+	Mapping a sequence S2 to a sequence S1
+	The sequence is defined by characters up to and including '\0'
+
+
+# on incrementing order:
+
+This is about dependency chain in the operation
+Does copying s2[n] depend on having copied s2[n-1]? No
+Therefore the increment order is not mathematically significant
+However, CPU cache behavior might prefer sequential access patterns

@@ -1,0 +1,41 @@
+What's the cleanest way to handle number-to-string conversion while ensuring proper character ordering?
+
+Before diving into recursion:
+	what operation gives each digit from right to left? 
+	How about from left to right? 
+	Which would be more efficient for building string?
+
+Related to memory management:
+	For malloc, what determines the exact size needed? 
+	what information I need to calculate this before starting the conversion
+
+Attention to 42's expectations:
+	what edge case might need handling that wasn't explicitly mentioned in the requirements, but would be important for robustness?
+
+
+
+
+I wish to get digits from left > right to correspond with writing chars > string
+
+Insight:
+When you divide by the highest power of 10, the quotient gives the leftmost digit
+
+
+How to determine the highest power of 10 for any given number? 
+Could this calulation be related to goal of calculating the string length?
+
+
+For getting the string length, could count recursions. 
+Recursion gives digits in reverse order (2,3,4). 
+To get them in correct order (4,3,2), need to either:
+	Store and reverse them, or
+	Find a way to process from left to right using powers of 10 as you mentioned
+
+
+For v1:
+iteration then conversion
+
+Plan:
+Iterate to count digits
+Malloc with this length + 1
+Fill string from right to left using modulo
