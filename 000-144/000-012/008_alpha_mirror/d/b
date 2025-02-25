@@ -12,9 +12,12 @@ character, followed by a newline.
 
 and so on.
 
+
 Case is not changed.
 
+
 If the number of arguments is not 1, display only a newline.
+
 
 Examples:
 

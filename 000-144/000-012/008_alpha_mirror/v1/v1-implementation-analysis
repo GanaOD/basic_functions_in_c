@@ -1,0 +1,17 @@
+function structured as a sequential transformation pipeline where:
+
+	I begin with the high-level control flow (iterating through each character)
+
+	I handle the specific transformation logic in the middle (the branching for lowercase/uppercase/non-alphabetical chars)
+
+	I complete with the output operation (writing the transformed character)
+
+
+This is an example of the "transform and emit" pattern, 
+which is common in stream processing. 
+
+
+Formally, this structure can be described as:
+	Sequential traversal: Iterate through input elements one at a time
+	Conditional transformation: Apply different transformation rules based on input properties
+	Immediate output: Process and emit each transformed element before moving to the next

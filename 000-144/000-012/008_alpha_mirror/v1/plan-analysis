@@ -1,0 +1,52 @@
+High-level reasoning:
+
+This problem represents a single-pass transformation where:
+	Each input element can be processed independently
+	The output depends only on the current input character (stateless)
+	The transformation function is bijective within the alphabet domain
+
+These properties make it an ideal candidate for a stream processing approach with O(n) time complexity and O(1) space complexity. 
+The program can read, transform, and write each character immediately without buffering the entire string 
+- a pure mapping function applied sequentially to each element of the input stream.
+
+
+
+
+
+Conversion logic: (mirroring)
+treat each letter's position in the alphabet as a space from 0-25, with 'a' at 0 and 'z' at 25 (for lowercase)
+
+
+For each letter, we need to find its mirror position in the alphabet. 
+for a letter at position p (0-25), its mirror is at position (25-p).
+
+
+For lowercase letters: 'z' - (c - 'a')
+	(c - 'a') gives us the position from 0-25
+	Subtracting from 'z' gives us the mirror position
+
+
+For uppercase letters: 'Z' - (c - 'A')
+	Same principle but with uppercase boundaries
+
+
+
+
+
+A bitwise approach could handle both cases in one line. 
+The key insight is that the lowercase and uppercase letters are 32 positions apart in the ASCII table, but their relative positions within their respective alphabets are identical.
+
+Using XOR operations:
+	To mirror within the alphabet: ('a' + 'z') - c or ('A' + 'Z') - c
+	For either case with bitwise: `(c ^ 32) would toggle between upper and lowercase
+
+could write a single expression like:
+return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) ? 
+        (((c & ~32) ? 'A' + 'Z' : 'a' + 'z') - c) : c;
+
+
+
+
+This represents the mathematical group theory concept of an involution 
+(a function that is its own inverse) when applied twice, 
+as mirroring the alphabet twice returns the original character.
