@@ -11,7 +11,7 @@ Pattern:
 
 
 higher-level pattern here: "out-of-band signaling":
-	using a special value outside the normal data range to convey meta-information about the structure itself.
+	using a special value outside the normal data range to convey meta-information about the structure itself
 
 
 connection to mathematical concepts:
@@ -22,6 +22,7 @@ connection to mathematical concepts:
 
 pattern emerged historically because computers need explicit ways to represent boundaries that are implicit in human thought. 
 When we think of a list or string, we naturally perceive its boundaries, but computers need these boundaries to be explicitly encoded.
+
 
 
 UPCOMING:
