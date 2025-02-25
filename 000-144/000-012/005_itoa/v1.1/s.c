@@ -1,91 +1,110 @@
 #include <stdlib.h>
 
-/* 
-No use of limits.h, not yet fluent in man-page use 
-so manual calculation of INT_MIN
-interested in its value, not sign here
-*/
-
-// Calculate 2^31 (2 raised to power 31)
-// Using multiplication since C has no exponentiation operator
-long int	calculate_int_min()
-{
-	long int	result = 1; // 2 ^ 0
-	int	count = 0;
-	while (count < 31)
-	{
-		result *= 2;
-		count++;
-	}
-	return (result);
-}
-
-// display INT_MIN value in stdout
-#include <stdio.h>
-
-int main(void)
-{
-    printf("INT_MIN = %d\n", calculate_int_min());
-    return (0);
-}
-
-/* 
-could then use: 
-#define MY_INT_MIN (-2147483648)
-*/
-
-
-
 char	*itoa(int nr)
 {
+	// keep nr as-is as reference pt instead of flag to mark neg. sign
+
+	long int	to_process = nr; 
+	// this is what gets processed when converting +ve int > chars
+
+	// -ve int handling 
+	// overall idea: convert -ve ints to their +ve values to work with these
+	// must be available in len calculation & storage at end
+	if (nr < 0)
+		to_process = -to_process;
+
+	
+	/* str len calculation for malloc (not incl. \0, just chars)*/
+	int	str_len = 0;
 
 	/* special case: 0 */
 	if (nr == 0)
+		str_len = 1;
+	else
 	{
-		int	str_len = 0;
-	}
-	// see if I can use logic later on from +ve value handling for 0
+		/* 
+		+ve int handling 
+		calculate str len with temp value as consumed in process
+		*/
+		long int	digit_count = to_process; // which is the +ve value of +ve & -ve ints, which is to be worked with from now on 
 
-
-
-	/* -ve int handling */
-
-	// flag: if +ve, 0. else if -ve, 1
-	int	neg = 0; 
-	// will be used in str_len calculation & storage of chars
-
-	else if (nr < 0)
-	{
-		neg = 1;
-
-		// special case: INT_MIN
-		if (nr == MY_INT_MIN)
+		while (digit_count > 0)
 		{
-			(long int)MY_INT_MIN;
+			str_len++; // as initialised to 0, to count 1st value before division
+			digit_count /= 10;
 		}
-		else
-			nr = nr * -1;
+
+		if (nr < 0)
+			str_len++; // for '-' sign
 	}
 
 
-	/* +ve int handling */
+	/*	malloc str	*/
+	char	*final_array = malloc(str_len + 1);
+	if (!final_array)
+		return NULL;
 
-	// temp value to calc. str len
-	// consumed in process
-	int	digit_count = nr;  
 
-	while (digit_count > 0)
+	/* process int, store chars in array */
+	// convert int > chars
+	// use modulo operator to extract each char from r > l
+	// store directly in char array
+	// this movement: r > l means final_array will point to 1st char at end
+	// so no need to introduce new ptr for traversal & storage so that beginning is stored
+	// don't need str_len variable later, can use up here
+
+	final_array[str_len] = '\0';
+
+	if (nr == 0)
+		final_array[0] = '0';
+	// keeps digit-processing logic below simpler: it's designed for non-zero numbers
+
+	else
 	{
-		digit_count /= 10;
-		str_len++;
+		int	i = str_len - 1;
+
+		while (to_process > 0)
+		{
+				final_array[i] = (to_process % 10) + '0';
+				to_process /= 10;
+				i--;
+		}
+
+		if (nr < 0)
+			final_array[0] = '-';
+		// due to decrementation-after-assignment in above logic, could stay with final_array[i] here
+		// but this direct approach would avoid potential off-by-1 error & explicitly states intent
 	}
-	// keep digit count just for nr. of digits
-	// extra char position for -ve sign with -ve ints dealt with in malloc
 
+	return (final_array);
+}
 
-	// malloc ze string
-	char	*final_array;
+#include <limits.h>
+#include <stdio.h>
 
-	final_array = malloc
+void	print_test(char *test_name, int nbr, char *result)
+{
+	printf("test name: %s\n", test_name);
+	printf("original int: %d\n", nbr);
+	printf("resulting string: %s\n\n", result);
+}
 
+int	main()
+{
+	char	*test_name;
+	printf("\n");
+
+	test_name = "positive int";
+	print_test(test_name, 777, itoa(777));
+
+	test_name = "zero";
+	print_test(test_name, 0, itoa(0));
+
+	test_name = "negative int";
+	print_test(test_name, -977, itoa(-977));
+
+	test_name = "minimum integer";
+	print_test(test_name, INT_MIN, itoa(INT_MIN));
+
+	return (0);
 }

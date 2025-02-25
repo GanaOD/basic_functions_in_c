@@ -1,0 +1,37 @@
+/* 
+No use of limits.h, not yet fluent in man-page use 
+so manual calculation of INT_MIN
+interested in its value, not sign here
+*/
+
+// Calculate 2^31 (2 raised to power 31)
+// Using multiplication since C has no exponentiation operator
+long int	calculate_int_min()
+{
+	long int	result = 1; // 2 ^ 0
+	int	count = 0;
+	while (count < 31)
+	{
+		result *= 2;
+		count++;
+	}
+	return (result);
+}
+
+// display INT_MIN value in stdout
+#include <stdio.h>
+
+int main(void)
+{
+    printf("INT_MIN = %d\n", calculate_int_min());
+    return (0);
+}
+
+/* 
+could then use: 
+#define MY_INT_MIN (-2147483648)
+*/
+
+
+NOT NECESSARY
+by declaring the integer that gets processed as long int: no need to specially handle (& thereby in this case know the value of) INT_MIN

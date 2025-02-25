@@ -17,7 +17,9 @@ store in string:
 	so could iterate in this direction along new string to store each char
 
 
-edge cases...
+
+
+Edge cases:
 
 0
 
