@@ -1,0 +1,27 @@
+The square root optimization is based on the fact that factors come in pairs that multiply to give the original number.
+
+If a number n has a factor f, then it must also have a corresponding factor n/f, because f × (n/f) = n.
+
+For example, the factors of 36 are:
+1 × 36 = 36
+2 × 18 = 36
+3 × 12 = 36
+4 × 9 = 36
+6 × 6 = 36
+
+Notice how the factors come in pairs, and these pairs "meet" at the square root of n. 
+For 36, the square root is 6, which is where the pairs meet.
+
+
+If we're testing whether n is prime, we only need to check for factors up to √n because:
+
+	If there is a factor larger than √n, there must be a corresponding factor smaller than √n.
+	If we've checked all numbers up to √n and found no factors, then there can't be any factors beyond √n either.
+
+
+In code:
+while (i * i <= n)
+
+This condition is checking if i is less than or equal to the square root of n. Once i exceeds √n, the loop terminates because we know we've checked all possible prime factors.
+
+This cuts the work roughly in half compared to checking all numbers up to n, and for large numbers, the savings become even more significant.

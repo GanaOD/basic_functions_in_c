@@ -9,6 +9,7 @@ of all prime numbers inferior or equal to it followed by a newline.
 If the number of arguments is not 1, or the argument is not a positive number,
 just display 0 followed by a newline.
 
+
 Examples:
 
 $>./add_prime_sum 5
@@ -17,5 +18,3 @@ $>./add_prime_sum 7 | cat -e
 17$
 $>./add_prime_sum | cat -e
 0$
-
-

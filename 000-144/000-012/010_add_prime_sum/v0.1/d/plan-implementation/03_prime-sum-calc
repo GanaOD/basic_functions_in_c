@@ -1,0 +1,33 @@
+# logical flow
+
+I will move from left to right
+
+natural alignment with how we typically think about the set of integers and prime numbers.
+
+
+
+# general idea, considerations
+
+For checking primes, will need to:
+
+	Iterate from 2 up to the input number
+	For each number, check if it's prime
+	If prime, add it to running sum
+
+
+
+For prime verification, consider how to efficiently determine if a number is prime. 
+Remember that a prime is only divisible by 1 and itself. 
+There are several optimization opportunities here.
+
+
+make sure to handle:
+
+	Input validation (ensuring all characters are digits)
+	Edge cases (non-positive numbers)
+	Displaying "0" when needed (as per the problem requirements)
+
+
+
+# optimisations
+

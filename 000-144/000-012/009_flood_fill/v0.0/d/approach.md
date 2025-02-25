@@ -62,7 +62,8 @@ like exploring a cave system:
    ┌──┴──┐       ┌───┴───┐
   Up   Down     Up     Down
 
-Each "path" must be fully explored before backtracking. The stack grows deeper only when we find a valid cell to fill, and shrinks as we exhaust all options at that position.
+Each "path" must be fully explored before backtracking. 
+The stack grows deeper only when we find a valid cell to fill, and shrinks as we exhaust all options at that position.
 
 
 
@@ -134,7 +135,8 @@ Single Stack Frame:
 │ Local Variables    │
 └────────────────────┘
 
-we don't need to explicitly store a graph structure - the stack implicitly maintains our "path" through the grid. As each recursive call returns, we automatically backtrack to the previous position.
+we don't need to explicitly store a graph structure - the stack implicitly maintains our "path" through the grid. 
+As each recursive call returns, we automatically backtrack to the previous position.
 
 
 
