@@ -1,0 +1,22 @@
+unsigned int parameter:
+
+means the number is always non-negative
+has a range from 0 to UINT_MAX (typically 4,294,967,295 on most systems)
+
+I don't need to worry about negative numbers
+
+
+
+The "sign bit" in integer representation is only needed to differentiate between positive and negative numbers.
+
+When we use an unsigned int, we're telling the compiler that this variable will never store negative values. 
+The computer uses this information to repurpose the sign bit, allowing the variable to store larger positive numbers instead.
+
+In a standard signed int (typically 32 bits), the range is usually from -2,147,483,648 to 2,147,483,647.
+But in an unsigned int of the same size, the range is from 0 to 4,294,967,295.
+
+Why is the default sign positive? This is mostly a convention in the evolution of computing. 
+Early computers often didn't have signed integers, and when they were added, positive was chosen as the default for compatibility. 
+In the C standard, unspecified integers are considered signed by default, but when you explicitly declare a variable as int, it's signed unless you specify unsigned int.
+
+For our power of 2 function, using unsigned int is appropriate since powers of 2 are positive numbers, and this allows us to handle larger values if needed.

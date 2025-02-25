@@ -1,0 +1,13 @@
+
+consider what makes a number a power of 2 from a bit perspective:
+
+Powers of 2 have exactly one bit set to 1
+The only exception is 0, which is not a power of 2
+
+How can we test if only one bit is set? A few approaches:
+
+Repeatedly divide by 2 and check if we ever get an odd number before reaching 1
+Use bitwise operations to check if only one bit is set
+
+The bitwise approach is elegant. If n is a power of 2, then n & (n-1) will be 0.
+Why? Because a power of 2 has the form 1000...0 in binary, and (n-1) has the form 0111...1. The AND operation will give 0.

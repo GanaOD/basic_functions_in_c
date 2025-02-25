@@ -1,0 +1,23 @@
+key insight: 
+a number is a power of 2 if and only if we can divide it by 2 repeatedly 
+until we reach exactly 1, 
+without ever encountering an odd number during the divisions
+
+
+implementation in code: need:
+	to check if the current number itself is odd (except when it's 1)
+	to reduce the number by dividing it by 2
+	to return 1 when I reach 1
+	a special case for 0
+
+
+
+Iterative approach:
+
+The loop will continue until n becomes 1 for a power of 2, 
+at which point it exits the loop and returns 1. 
+For non-powers of 2, we'll hit an odd number during division, immediately return 0, and exit the function.
+
+
+
+O(log n) time complexity
