@@ -1,0 +1,29 @@
+general principle for error checking between functions comes down to establishing clear responsibilities and boundaries:
+
+
+Check at the boundary: 
+Validate inputs as early as possible, ideally when they first enter your program or module. 
+This prevents invalid data from propagating through your system.
+
+
+Contract-based design: 
+Each function should have a clear "contract" about what inputs it accepts and what guarantees it provides for outputs. 
+Functions deeper in the call stack can assume their inputs have already been validated.
+
+
+Single responsibility: 
+Decide which function is responsible for which validation:
+
+
+
+The caller/orchestration function (pgcd) should verify interface-level requirements (valid string format)
+The implementation function (str_to_int, hcd) should verify its specific operating requirements (handling edge cases like zeros)
+
+
+Fail fast: Detect and handle errors as soon as possible, rather than letting them cause unexpected behaviors deeper in execution.
+
+Match domain requirements: In this case, the subject specifies "strictly positive integers", so checking for zeros or negative values is appropriate at the beginning.
+
+
+My design pattern:
+validating the structure in pgcd and letting the implementation details in str_to_int and hcd focus on their primary algorithms
