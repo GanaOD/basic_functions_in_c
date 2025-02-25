@@ -1,0 +1,20 @@
+Identical to epur except with 1 param change: 3 instead of 1 space
+
+
+v1 implementation of expand_str compared with v1 & v2 of epur:
+
+this version has a different logical structure:
+
+Uses in_word_flag to track whether we're currently processing a word
+
+Has three main cases:
+	Space handling: Just skip and clear flag
+	Word handling: Set flag and write character
+	Word-to-space transition handling: Skip spaces, check for more words, write three spaces if needed
+
+The key difference here is that the space-writing logic is handled after finishing a word (when transitioning from word to space), rather than:
+	epur v1: handled spaces before starting a new word
+	epur v2: the first-word-then-rest approach: which had two distinct phases
+
+Also note the str-- compensation for the main loop's increment - 
+this kind of adjustment is often a sign that the loop structure might be fighting against the natural flow of the state transitions.

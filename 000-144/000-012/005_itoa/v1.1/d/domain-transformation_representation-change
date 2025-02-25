@@ -1,0 +1,26 @@
+CONTEXT
+casting INT_MIN from int > long int to avoid overflow
+	as my prog logic works with ints in +ve form and +ve form of INT_MIN ain't gonna fit
+
+
+PRINCIPIO
+higher-level principle at work here: "domain transformation" or "representation change." 
+a fundamental concept in computational mathematics and algorithm design.
+
+When a problem is difficult to solve in its original domain or representation, you transform it into another domain where the solution becomes more straightforward, then transform the result back if needed.
+
+In this case, you're transforming the integer from its native 32-bit int representation to a longer 64-bit long representation temporarily. This gives you more "space" to work with, avoiding the overflow problem when dealing with INT_MIN.
+
+
+
+Other examples of this principle in different contexts:
+	
+	Fast Fourier Transform: Converting time-domain signals to frequency domain to make convolution operations simpler
+	
+	Logarithmic transformations: Converting multiplication to addition
+	
+	Homogeneous coordinates in computer graphics: Adding an extra dimension to make transformations expressible as matrix operations
+
+
+
+This approach often reveals elegant solutions by sidestepping limitations of the original problem space, allowing you to use a uniform algorithm rather than handling special cases separately.

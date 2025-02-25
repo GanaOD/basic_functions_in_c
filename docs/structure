@@ -1,0 +1,51 @@
+Organisation: numerical
+more or less corresponding to order of first time working on problem
+
+
+/d			docs
+
+/g			ganaod: my work
+/o			other work (person, organisation): alternative implementations 
+	this distinction only used if other work included. else: default == my work 
+	> straight to next level: v
+
+
+/d:
+	b				brief / subject / specification / description:	problem to solve
+	d			see d below: this is for synthesis of insights across all versions (both g/ and o/)
+
+
+
+/g:
+		/v		versions:
+
+			lower numbers: likely to be basic, simple, sth. that "gets the job done", is "good enough"
+										esp. v0: 1st run through problem. Using my mind, current abilities to do my best shot & get something that works. struggling, etc.
+										okay if just a quick hack, ok is not elegant
+			later iterations:
+				explorative, experimental
+					exploring mathematics, computation
+					e.g. alternative, more advanced data structures & algorithms
+			
+				experimental: can be creative, can have fun
+
+				possible versions:
+					security-hardened: study security principles
+
+			aiming for a version that's mathematically pure, computationally v advanced
+				
+	
+
+						within each /v:
+							s				solve: actual code
+							d				documentation:
+												plan, design considerations
+												reflection: insights, what I learned: brief descriptions of ideas, concepts, theory...
+																ideas for future exploration
+
+
+
+/o:
+	/name/handle:
+				s				solve / solution: their code
+				a				analysis, incl. insights gained...

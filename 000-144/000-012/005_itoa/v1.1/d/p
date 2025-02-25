@@ -1,0 +1,32 @@
+to convert: int > chars
+	recursion + usual ascii int-char conversion
+
+to store in char array using malloc
+	need len of int, nr. of digits
+
+1 possibility:
+	a temp int that gets divided by 10 until it is <10
+	the number of divisions + 1 = nr. of digits = len of char array
+
+malloc call with this len value
+
+store in string:
+	another temp int which stores the original int
+	I'm familiar with method: recursion until base point (<10), then modulo 10 (because base 10 int) to 'extract' each digit as stack unwinds
+	this gives chars from r > l
+	so could iterate in this direction along new string to store each char
+
+
+edge cases...
+
+0
+
+this method works with positive ints
+	to work with negative ints: convert to positive (multiply by -1), process this +ve version
+	and ensure a '-' sign is added to beginning of char array
+
+INT_MIN (defined, not called as lib function)
+	cannot be converted with above method to +ve: this wouldn't fit in an int
+	so special handling:
+		instead of its own logic: cast to long
+			>> domain-transformation_representation-change

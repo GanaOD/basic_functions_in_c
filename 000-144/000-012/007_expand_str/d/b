@@ -13,6 +13,7 @@ start/end of the string.
 If the number of parameters is not 1, or if there are no words, simply display
 a newline.
 
+
 Examples:
 
 $> ./expand_str "vous   voyez   c'est   facile   d'afficher   la   meme   chose" | cat -e
@@ -24,13 +25,3 @@ $
 $> ./expand_str "" | cat -e
 $
 $>
-
-
-if (!is_word(*str) && in_word_flag == 1)
-{
-    while (!is_word(*str) && *str)  // Skip multiple spaces
-        str++;
-    if (*str)                       // If not end of string
-        write(1, "   ", 3);
-    str--;                          // Compensate for main loop's increment
-}
