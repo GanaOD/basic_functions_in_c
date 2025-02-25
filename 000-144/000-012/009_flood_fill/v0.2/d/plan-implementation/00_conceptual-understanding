@@ -1,0 +1,71 @@
+# Problem Domain Analysis and Mental Model Formation
+
+At its core, flood_fill is a fundamental graph traversal problem. 
+
+dealing with:
+	A discrete grid (2D array) - a mathematical graph structure
+	Connected components - regions of identical values
+	Boundary conditions - edges of the grid or different character values
+	A traversal strategy - how we move through the structure systematically
+
+
+From a mathematical perspective, we're exploring the connected component that contains the starting point, replacing each element we visit. This is *isomorphic to a breadth-first or depth-first traversal of a graph where:
+
+	Nodes are the cells in the grid
+	Edges exist between orthogonally adjacent cells with the same character value
+
+
+The insight here is that we don't need to precompute the entire "zone" - 
+we can discover it dynamically through the traversal process.
+
+* "isomorphic to"
+ i.e. there's a direct structural correspondence between this grid traversal problem and a standard graph traversal. 
+ We can map one problem perfectly to the other without losing any essential properties. 
+ The cells in our grid correspond to nodes in a graph, and adjacent cells with the same value correspond to connected nodes.
+
+
+
+Two approaches present themselves:
+
+	Recursive approach - elegant and mirrors the mathematical definition of connected components
+	Iterative approach - using an explicit queue or stack data structure
+
+
+Both approaches reflect the same underlying mathematical structure, but with different computational properties regarding stack usage and memory management.
+
+
+
+The recursive implementation would represent the purest expression of the algorithm, but the iterative version might be more robust for large grids (to avoid stack overflow).
+
+
+why recursion might be considered "purer":
+
+	Recursion directly mirrors the mathematical definition of a connected component: a cell belongs to a region if it has the same value as the starting cell AND is connected to the region through cells of the same value.
+
+	Recursive algorithms express this relationship very naturally: "fill this cell, then fill all valid adjacent cells." 
+	This closely matches the inductive mathematical definition.
+
+	The recursive solution requires less explicit data management (no manual queue/stack), making the core logic clearer and more focused on the essential mathematical relationship.
+
+
+However, "purity" here is somewhat philosophical. The iterative solution is equally valid and often more practical for large inputs because it avoids potential stack overflow issues. 
+Both approaches reflect the same mathematical structure but express it differently in code.
+
+
+
+
+
+
+This stage is about understanding the mathematical essence of the problem before writing any code. 
+We're considering:
+
+	The underlying structure (connected graph components in a grid)
+	The traversal patterns (recursive vs. iterative exploration)
+	The transformation rules (when to replace characters)
+	Boundary conditions (grid edges and value differences)
+
+
+
+With this mental model established, we can move to 
+stage 1: planning the specific algorithm implementation 
+with a clearer vision of what we're trying to achieve.

@@ -1,0 +1,151 @@
+# high level
+
+I need a clear algorithm that:
+
+	Starts at a given cell (the seed position)
+	Identifies the target character to replace (the original character at the seed position)
+	Replaces that character with 'F'
+	Expands in the four cardinal directions (not diagonally)
+	Stops at boundaries (different characters or array limits)
+
+
+The recursive approach would follow this pattern:
+
+	Base cases: out of bounds, or current cell is not the target character
+	Recursive case: mark current cell, then explore in all four directions
+
+
+core insight: each cell needs only be visited once. Once marked, it's no longer part of the target character set.
+
+
+This recursive approach directly mirrors the mathematical definition of a "connected component" in graph theory, which is why it's elegant for this problem.
+
+The implementation will need careful boundary checking to prevent segmentation faults and infinite recursion.
+
+
+
+# mapped out
+
+flood_fill(tab, size, position):
+
+    # Base cases (stop recursion):
+    1. If position.x < 0 or position.x >= size.x or position.y < 0 or position.y >= size.y
+       → Return (out of bounds)
+    
+    2. If tab[position.y][position.x] != original_char
+       → Return (different character or already filled)
+    
+
+    # Processing (current position is valid):
+    3. tab[position.y][position.x] = 'F'
+    
+    # Recursive exploration (four cardinal directions):
+    4. flood_fill(tab, size, {position.x, position.y - 1}) // Up
+    5. flood_fill(tab, size, {position.x, position.y + 1}) // Down
+    6. flood_fill(tab, size, {position.x - 1, position.y}) // Left
+    7. flood_fill(tab, size, {position.x + 1, position.y}) // Right
+
+
+
+how do we know what the "original character" is? 
+We need to capture the character at the beginning position (the seed) before we start filling, and use that as our target throughout the recursion.
+
+This could be done either:
+	By capturing it once at the start and passing it as a parameter
+	Or by checking against the original character at the beginning position each time
+
+The first approach is more efficient but requires modifying the function signature, while the second is less efficient but preserves the original function signature.
+
+
+
+I choose 1st approach: using a helper function to maintain the original function signature while achieving clean recursion.
+
+	It separates concerns cleanly - the main function handles the interface contract, while the helper handles the actual recursive algorithm
+	It avoids repetitive lookups of the original character
+	It encapsulates the complete algorithm in a self-contained unit
+
+
+Helper be like:
+
+void flood_fill_helper(char **tab, t_point size, t_point current, char target_char)
+{
+    // Base cases (stop recursion)
+    if (current.x < 0 || current.x >= size.x || current.y < 0 || current.y >= size.y)
+        return;
+    if (tab[current.y][current.x] != target_char)
+        return;
+    
+    // Fill current cell
+    tab[current.y][current.x] = 'F';
+    
+    // Recursive exploration (four directions)
+    flood_fill_helper(tab, size, (t_point){current.x, current.y - 1}, target_char);
+    flood_fill_helper(tab, size, (t_point){current.x, current.y + 1}, target_char);
+    flood_fill_helper(tab, size, (t_point){current.x - 1, current.y}, target_char);
+    flood_fill_helper(tab, size, (t_point){current.x + 1, current.y}, target_char);
+}
+
+
+and main be just initializa:
+
+void flood_fill(char **tab, t_point size, t_point begin)
+{
+    char target_char = tab[begin.y][begin.x];
+    flood_fill_helper(tab, size, begin, target_char);
+}
+
+
+
+## important logical sequence here:
+
+
+We first check the base cases (out of bounds or different character)
+If we pass those checks, then we mark/fill the current cell with 'F'
+Only after marking do we make the recursive calls to explore neighbors
+
+
+
+This sequence is critical because:
+
+We need to check if the current cell is valid before modifying it
+We must mark the cell before recursing to prevent infinite loops
+If we marked after recursion, we'd get stack overflow since the algorithm would keep revisiting the same cells
+
+
+The marking serves as the "visited" flag in graph traversal. Once a cell is marked with 'F', future recursive calls will reject it because it no longer matches the target character, preventing cycles.
+
+
+Think of it as:
+
+	Validate the current position
+	Mark it as processed
+	Explore neighbors
+
+
+This ensures each cell is visited exactly once, maintaining the algorithm's correctness and efficiency.
+
+
+
+# summing up: summary of logical flow:
+
+
+flood_fill function:
+
+	Captures the target character from the beginning position
+	Makes the initial call to the recursive helper
+	Then it's done
+
+
+recursive_fill function:
+
+	Handles all the recursive logic
+	Terminates recursion at base cases (out of bounds or different character)
+	Fills the current cell if valid
+	Explores in all four directions recursively
+	Each recursive call might lead to more recursive calls until all connected cells of the target character are filled
+
+
+
+The recursion naturally terminates when all connected cells matching the target character have been replaced with 'F', as they no longer match the target character for future recursive calls.
+
+This is how the algorithm systematically explores and fills the entire connected region, starting from the seed position. The recursion call stack will grow and shrink as needed to explore all branches of the connected component.

@@ -1,0 +1,44 @@
+# Passing t_point by Value vs. Pointer
+
+
+We pass the t_point struct by value (copy) rather than by pointer because:
+
+Efficiency for small structs: t_point is a very small struct (just two integers), so copying it is as efficient or more efficient than dereferencing a pointer.
+
+Simplicity: Passing by value makes the code cleaner as we access members directly with . syntax instead of using -> for pointer dereferencing.
+
+Immutability guarantees: When passing by value, we ensure that the original struct can't be accidentally modified by the function. This is especially important for parameters like size that shouldn't change.
+
+Stack simplicity: For recursive functions, keeping parameter passing simpler and directly on the stack (rather than heap allocations or pointer manipulations) can make the code easier to reason about.
+
+Convenience for temporary points: We can easily create temporary point values in-line with code like (t_point){current.x + 1, current.y}, which is more concise than creating and passing pointers.
+
+
+
+This approach follows the principle that small, value-type structs are often best passed by copy, 
+while larger structs or those that need to be modified would be passed by pointer.
+
+
+
+# t_point){}
+
+The (t_point){} notation is creating a temporary anonymous t_point variable directly inline.
+
+This is using C's compound literal syntax, introduced in the C99 standard. The curly braces {} contain the initializers for the struct members in order. 
+
+So when we write:
+(t_point){current.x + 1, current.y}
+
+We're creating a new t_point struct where:
+
+	The x value is set to current.x + 1
+	The y value is set to current.y
+
+
+This syntax is elegant and efficient because:
+
+	It creates the struct directly where it's needed without requiring a separate variable declaration
+	It makes the code more concise while still being readable
+	It avoids creating named variables that would only be used once
+
+This is particularly useful for our recursive calls where we need to specify slightly modified coordinates (up, down, left, right from the current position) without polluting the function with numerous temporary variables.
