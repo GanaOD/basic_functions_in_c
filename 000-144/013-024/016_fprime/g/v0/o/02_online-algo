@@ -1,0 +1,26 @@
+essentially an "online algorithm" pattern where we:
+
+	Process input incrementally
+	Generate output as soon as we discover information
+	Never need to store the complete set of results
+
+
+From a computational perspective, this approach has several advantages:
+
+Memory Efficiency: 
+We don't need to allocate space for storing all prime factors before printing. This is particularly important for large numbers with many factors.
+
+Streaming Output: 
+Results appear as soon as they're discovered rather than waiting for the entire computation to complete.
+
+Simplicity: 
+The code mirrors the mathematical process directly, making it easier to reason about.
+
+Time-Space Tradeoff: 
+We're essentially trading the need for extra space (to store all factors) for a more linear computational flow.
+
+
+
+The pattern here is also related to "greedy algorithms" in that we make locally optimal choices (finding the smallest divisible factor) at each step, which naturally leads to the correct global solution (the complete prime factorization in ascending order).
+
+In systems programming, this kind of "process and output immediately" pattern is particularly valuable when dealing with limited resources or streaming data that might be too large to fully buffer.

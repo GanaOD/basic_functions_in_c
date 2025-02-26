@@ -1,6 +1,9 @@
 Organisation: numerical
 more or less corresponding to order of first time working on problem
 
+
+
+
 LEVEL 1:
 
 /d			docs
@@ -12,12 +15,18 @@ the following categorisation does not always exist:
 	> straight to next level: v
 
 
+
+
 LEVEL 2:
 
 /d:
 	b			brief / subject / specification / description:	problem to solve
 	d			see d below: this is for synthesis of insights across all versions (both g/ and o/)
 
+
+if no other docs, then just b file without d/
+
+*WHAT'S THIS FORM OF STRUCTURE? ADD HIGHER LEVEL ONLY WHEN OTHER BRANCHES EXIST?
 
 
 /g:

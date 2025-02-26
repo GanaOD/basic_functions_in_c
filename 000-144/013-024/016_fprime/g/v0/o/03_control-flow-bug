@@ -1,0 +1,35 @@
+# PROBLEM
+(in my original implementation)
+
+if (nbr == 1)
+		printf("1"); return ;
+
+
+# ANALYSIS
+
+
+C Language Level
+
+	The syntax error relates to C's statement scoping rules where a single statement follows a conditional without braces
+	This creates an unintended control flow where the return statement executes unconditionally rather than only when nbr == 1
+
+
+Systems Programming Level
+
+	This represents a classic control flow bug where execution terminates prematurely
+	The function exits before completing its intended computation, demonstrating how subtle indentation issues can lead to significant logical errors
+	Memory and stack management work correctly (the function properly returns to caller), but the algorithmic logic is short-circuited
+
+
+Computational Theory Level
+
+	What we're seeing is an inadvertent transformation of the algorithm from an iterative factorization process to a constant-time function that always returns immediately
+	The program structure no longer matches the mathematical problem structure (prime factorization)
+	The time complexity effectively changed from O(√n) in the intended implementation to O(1) in the buggy version
+
+
+Software Engineering Level
+
+	This demonstrates why consistent brace usage is considered a best practice in many coding standards
+	It's an example of how visual formatting (indentation) doesn't affect execution but can mislead developers about the actual control flow
+	The bug is particularly insidious because the code compiles without warnings
