@@ -5,12 +5,15 @@ The WHOLE thing is a parameter type
 "...must return void..."
 "...and take one void* parameter"
 
-The brackets around (*f) are crucial - they bind the asterisk to f to make it a function pointer, rather than a function that returns a pointer
+The brackets around (*f) are crucial - 
+they bind the asterisk to f to make it a function pointer, 
+rather than a function that returns a pointer
 
 
 1st encounter with passing functions as parameters 
 apparently lets you write flexible code. 
-my ft_list_foreach can work with ANY function that matches this signature/ prototype pattern: return void, take one void* parameter
+my ft_list_foreach can work with ANY function that matches this signature / prototype pattern: 
+return void, take one void* parameter
 
 
 

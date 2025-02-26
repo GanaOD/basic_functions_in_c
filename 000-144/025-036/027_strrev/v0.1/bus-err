@@ -1,0 +1,39 @@
+# original faulty main:
+
+int	main()
+{
+	char	*str;
+	str = "Hoohaaahooooohalala";
+	printf("%s\n", strrev(str));
+	return (0);
+}
+
+
+bus error
+
+
+
+# analysis
+
+trying to modify a string literal
+
+
+In C, when you declare a string like this:
+
+char *str = "Hoohaaahooooohalala";
+
+You're creating a pointer to a string literal that is stored in read-only memory. Attempting to modify this string (which your strrev function does) is illegal and causes the crash.
+To fix this, you need to create a modifiable copy of the string. There are two main ways:
+
+
+
+Use a character array instead of a pointer:
+
+char str[] = "Hoohaaahooooohalala";
+
+
+
+Or allocate memory on the heap:
+
+char *str = strdup("Hoohaaahooooohalala");
+// Don't forget to free(str) after use

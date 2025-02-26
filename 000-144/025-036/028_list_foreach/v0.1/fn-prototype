@@ -1,0 +1,19 @@
+void (*f)(void *) is a function pointer declaration
+
+A function pointer is a variable that stores the address of a function. 
+Just as you can have pointers to data (chars, ints, structs), 
+you can have pointers to executable code (functions).
+
+
+The syntax void (*f)(void *) means:
+
+	f is a pointer (*f)
+	It points to a function that returns void (the first void)
+	The function it points to takes one parameter of type void * (the void * in parentheses)
+
+
+In essence, it's a way to defer the choice of which function to call until runtime. 
+It enables "callbacks" - where one function accepts another function as a parameter.
+
+The exercise is asking you to apply a given function to each element in a linked list. 
+The function you're implementing doesn't know or care what the passed function actually does - it just applies it to each element.
