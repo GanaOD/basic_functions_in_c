@@ -1,0 +1,22 @@
+Unlike strings (which are arrays of chars), 
+integer arrays don't use a special value to mark their end. 
+
+
+This is because:
+
+	Explicit size management: 
+	With integer arrays, the size is either:
+
+		Known at compile time for static arrays
+		Tracked separately by the programmer for dynamic arrays
+		Passed as a parameter to functions that operate on the array
+
+
+	No reserved values: 
+	In strings, '\0' (ASCII value 0) is reserved as the terminator, but for integers, all possible values (within the integer range) are valid data. 
+	There's no universally "special" integer value that could serve as a terminator without restricting the usable range.
+
+
+	Memory model simplicity: 
+	This design follows C's philosophy of giving programmers direct control over memory. 
+	The language provides primitive tools and lets programmers build more complex abstractions when needed.
