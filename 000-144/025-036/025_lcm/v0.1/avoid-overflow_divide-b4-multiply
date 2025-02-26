@@ -1,0 +1,57 @@
+# my code, calculating result (lcm)
+
+unsigned int	result = (a * b) / hcf;
+
+# problem: int overflow potential
+
+
+## Mathematical Principles
+
+Distributive Property Application: 
+The LCM formula 
+LCM(a,b) = (a*b)/HCF(a,b) 
+can be rewritten using the distributive property 
+as LCM(a,b) = (a/HCF(a,b)) * b
+
+Mathematically these are equivalent, but computationally they have different implications.
+
+Number Theory Insight: 
+Since a and HCF(a,b) share common factors by definition, 
+a/HCF(a,b) is guaranteed to be an integer. 
+This division doesn't lose information but reduces the magnitude before multiplication.
+
+Invariant Preservation: 
+The rearrangement preserves the mathematical invariant while changing the computational path.
+
+
+
+## Computational Principles
+
+Range Limitation: 
+Unsigned integers have a finite range [0, 2^32-1] (for typical 32-bit systems), 
+creating a bounded arithmetic system rather than true mathematical integers.
+
+Modular Arithmetic: 
+When overflow occurs, the result wraps around according to modular arithmetic 
+(mod 2^32), which breaks the intended calculation.
+
+Operation Ordering: 
+In computation, the order of operations affects not just readability 
+but correctness when dealing with bounded representations.
+
+Risk Mitigation: 
+By performing division before multiplication, we're reducing 
+the maximum possible intermediate value, 
+effectively managing the risk profile of the calculation.
+
+Information Preservation: 
+The alternative approach preserves all mathematical information 
+while avoiding the computational limitation.
+
+
+
+
+This principle of "divide before multiply" appears in many computational contexts 
+where overflow is a concern - 
+it's a specific instance of the more general principle of managing intermediate value magnitudes 
+in fixed-width arithmetic systems

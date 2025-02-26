@@ -4,10 +4,13 @@ if (!*s2)
 	return;
 }
 
+
 I originally typed:
 
 if (!*s2)
 	write (1, "0", 1), return;
+
+
 
 COMPILATION ERROR: expected expression
 

@@ -7,7 +7,9 @@ Write a function that takes two unsigned int as parameters and returns the
 computed LCM of those parameters.
 
 LCM (Lowest Common Multiple) of two non-zero integers is the smallest positive
-integer divisible by the both integers.
+integer divisible by both integers.
+
+
 
 A LCM can be calculated in two ways:
 
@@ -20,6 +22,8 @@ calculate as follows:
 	LCM(x, y) = | x * y | / HCF(x, y)
 
   | x * y | means "Absolute value of the product of x by y"
+
+
 
 
 If at least one integer is null, LCM is equal to 0.
