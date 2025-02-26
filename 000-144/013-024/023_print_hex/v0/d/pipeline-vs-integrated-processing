@@ -1,0 +1,80 @@
+I originally broke out functionality for converting int base 10 > int base 16 then
+began with new prog module for converting int base 16 > char representation...
+
+Suggestion: streamline the prog flow:
+don't need to store the base 16 integer separately - 
+the beauty of the recursive approach is that you can convert and 
+display immediately as the recursion unwinds. 
+The decimal_to_hex function can handle both conversion and display in one go.
+
+
+an important principle in program design:
+
+the difference between:
+	Pipeline processing
+		where data flows through distinct transformation stages, each with separate storage
+	Integrated processing
+		where transformations and actions occur together in a more streamlined flow
+
+
+The streamlined recursive approach works well here because:
+
+	The transformation (decimal to hex digit) and the action (writing the digit) can happen at the same moment
+	The ordering problem (digits need to be written most-significant first) is naturally solved by recursion
+	No intermediate storage is needed for the complete hex representation
+
+
+When to use this integrated pattern:
+
+	When the result is used exactly once and immediately
+	When the transformation and action are closely related
+	When ordering challenges are elegantly solved by the call stack
+
+
+When to use modular pipeline processing:
+
+	When the transformed data might be used multiple ways
+	When you need to manipulate the full result before acting on it
+	When different steps might be reused in other contexts
+
+
+This recursive pattern is particularly useful for:
+
+	Tree traversals (where you need to process nodes in a specific order)
+	Converting between representations when the output is ordered differently than the calculation
+	Any time you need to build something in reverse order of calculation
+
+
+
+The pattern here is "transformation with immediate action during recursion unwinding" - 
+it handles problems where the order of processing differs from the order of output.
+
+
+
+
+"differs from the order of processing versus the order of output."
+
+In base conversion, the natural order of calculating digits (mathematically) is from least significant to most significant:
+
+	First remainder: gives the rightmost digit
+	Second remainder: gives the second-to-right digit
+	And so on...
+
+
+But the natural order of displaying digits is from most significant to least significant (left to right).
+
+So there's a mismatch:
+
+	Calculation naturally produces: rightmost digit → leftmost digit
+	Display naturally requires: leftmost digit → rightmost digit
+
+
+This mismatch creates the need for either:
+
+	Storing digits and then reversing them before display (iterative approach)
+	Using recursion to naturally fix the ordering problem (recursive approach)
+
+
+The recursion works because it processes the number in one direction (dividing by 16 repeatedly), 
+but as the call stack unwinds, actions happen in the reverse direction - perfectly matching our display needs.
+This pattern shows up in many problems where calculation order and presentation order are inverted.

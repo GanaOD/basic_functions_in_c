@@ -1,0 +1,15 @@
+problem is about number base conversion: decimal (base 10) → hexadecimal (base 16)
+
+This conversion follows a mathematical pattern: successive division by the new base
+
+The algorithm for base conversion is:
+
+While number > 0:
+	Calculate remainder when dividing by target base
+	Convert remainder to appropriate symbol (0-9, a-f for hex)
+	Divide number by target base
+	Add symbol to result (in reverse order)
+
+
+
+This pattern reveals the essence of positional number systems - each position represents a power of the base, and the symbols used are just representations of quantities.
