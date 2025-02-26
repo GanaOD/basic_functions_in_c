@@ -1,0 +1,41 @@
+ mentally divide the array into a sorted portion and an unsorted portion. 
+take one element at a time from the unsorted portion and insert it into its correct position in the sorted portion
+
+
+void sort_int_tab(int *tab, unsigned int size)
+{
+    int i = 1;
+    int j;
+    int current_value;
+    
+    while (i < size)
+    {
+        current_value = tab[i];
+        j = i;
+        
+        while (j > 0 && tab[j - 1] > current_value)
+        {
+            tab[j] = tab[j - 1];
+            j--;
+        }
+        
+        tab[j] = current_value;
+        i++;
+    }
+}
+
+
+
+key insights here:
+
+	We start with the first element considered "sorted" already
+
+	For each new element, we:
+
+		Save its value
+		Shift larger elements rightward to make room
+		Place the value in its correct position
+
+
+Insertion sort mimics the way people often sort cards in their hand - 
+you pick up a card and insert it into its proper position in the already-sorted cards you're holding.

@@ -1,0 +1,43 @@
+need to implement an in-place sorting algorithm for an integer array that preserves duplicates. 
+
+most appropriate algorithm for this task?
+key considerations:
+
+	Must be in-place (rules out merge sort unless specially implemented)
+	Must preserve duplicates (stable sorting would guarantee this, but not strictly required)
+	Should be relatively simple to implement in C
+
+
+Among the common sorting algorithms:
+
+	Bubble sort: Simple, in-place, stable, but O(n²) time complexity
+	Selection sort: Simple, in-place, not stable, O(n²) time complexity
+	Insertion sort: Simple, in-place, stable, O(n²) but efficient for small or nearly sorted arrays
+	Quick sort: In-place, not stable, O(n log n) average case but O(n²) worst case
+	Heap sort: In-place, not stable, O(n log n) worst case
+
+
+I choose insertion sort:
+conceptually simple, easy to implement correctly, and performs well for small arrays or partially sorted data
+
+
+
+
+A "stable" sorting algorithm preserves the relative order of equal elements. 
+If two elements have the same value but different positions in the original array, 
+a stable sort guarantees they'll maintain their original relative positions after sorting.
+
+For example, if you have [3, 2, 3', 1] where the second 3 is marked as 3' to distinguish it, 
+a stable algorithm would produce [1, 2, 3, 3'] (keeping the first 3 before the second). 
+A non-stable algorithm might result in [1, 2, 3', 3], switching their order.
+
+
+"In-place" means the algorithm sorts the data within the original array 
+without requiring significant additional memory space. 
+It modifies the input array directly rather than creating a new array to hold the sorted result.
+
+
+For example:
+
+Merge sort (in its standard implementation) is not in-place because it typically requires O(n) extra space for merging.
+Bubble sort is in-place because it only needs a single temporary variable for swapping elements, regardless of the array size.
