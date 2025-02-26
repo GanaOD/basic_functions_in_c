@@ -1,0 +1,28 @@
+Compared with 029:
+
+high-level structure remains conceptually similar:
+
+	Maintain a sorted portion (from beginning)
+	Take each unsorted element and insert it in the correct position
+
+
+The key differences will be:
+
+	Traversal (next pointers instead of indexes)
+	Element shifting (pointer reassignment instead of value copying)
+
+
+
+For the linked list version:
+
+	We'll need a pointer to the "current" node (equivalent to i)
+	We'll need to handle the logic of removing a node and reinserting it
+	The comparison will use the function pointer cmp instead of direct comparison
+
+
+The tricky part with linked lists is that removing and inserting requires managing multiple pointers. 
+We'll need to keep track of:
+
+	The node being considered for insertion
+	The previous node (to adjust pointers when removing)
+	Where to insert it in the sorted portion
