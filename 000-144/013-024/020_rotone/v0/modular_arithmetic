@@ -1,0 +1,39 @@
+lowercase chars remapping: ((*str - 'a' + 1) % 26)
+
+subtract 'a' to get position in alphabet (0-25)
+Add 1 to shift forward / rotate 1 char (as per subject)
+Take modulo 26 to handle wraparound (creates a cyclic group of size 26)
+	e.g. 'z' wraps around to position 0 == 'a'
+Add 'a' maps back into ASCII space
+
+
+
+using + 'a' or + 'A' at the end of your calculation:
+performing a modular offset translation between different numeric spaces.
+
+
+Here's the mathematical description:
+
+First, you subtract the base value ('a' or 'A') to normalize the character to a 0-25 range:
+
+c - 'a' maps 'a'→0, 'b'→1, ..., 'z'→25
+c - 'A' maps 'A'→0, 'B'→1, ..., 'Z'→25
+
+
+Then you add 1 and apply modulo 26 to handle the rotation with wraparound:
+
+(c - base + 1) % 26 ensures the value stays in the 0-25 range
+
+
+Finally, you add the base value back to map from the 0-25 range to the ASCII range:
+
++ 'a' maps 0→'a', 1→'b', ..., 25→'z'
++ 'A' maps 0→'A', 1→'B', ..., 25→'Z'
+
+
+
+If you had accidentally used + '0' instead, you would have mapped to the ASCII range for digits 
+(48-73), which would produce incorrect characters.
+
+
+This pattern of "translate to normalized space → perform operation → translate back" is a common technique in character manipulation, coordinate systems, and many other areas of computing and mathematics.
