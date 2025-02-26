@@ -1,0 +1,18 @@
+1 pass through str
+
+first word stored 
+subsequent words directly displayed
+then stored word displayed
+
+
+SPACE MANAGING
+
+is_space checks for all types of spaces 
+	"Words will be separated by only one space in the output."
+			IN THE OUPUT. I misread this at 1st glance!
+
+after writing every word (before writing the stored one)
+write a space
+	this in a while loop
+
+then outside loop, write stored word, not followed by space

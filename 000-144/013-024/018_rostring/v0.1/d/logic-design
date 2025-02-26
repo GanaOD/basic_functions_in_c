@@ -1,0 +1,81 @@
+pattern perspective: this problem is about partitioning a sequence and 
+rotating the first partition to the end. 
+
+Mathematically, if we have a sequence S = {w₁, w₂, ..., wₙ}, 
+the operation transforms it to S' = {w₂, w₃, ..., wₙ, w₁}, 
+where each wᵢ is a "word" (contiguous non-whitespace characters).
+
+
+The algorithm requires distinguishing between three key states:
+
+	Whitespace (to be skipped or compressed)
+	The first word (to be stored and moved)
+	Subsequent words (to be output immediately)
+
+
+
+From a state machine perspective, code will transition between:
+
+	Skipping leading whitespace
+	Processing the first word
+	Skipping inter-word whitespace
+	Processing subsequent words
+
+
+
+The branching approach with sub-loops is elegant here because it maps cleanly to these distinct states. 
+Each branch handles a specific part of the transformation with its own termination condition.
+
+
+In pseudocode:
+	1. Skip leading whitespace
+	2. Store first word
+	3. Skip whitespace
+	4. For each subsequent word:
+		a. Print word
+		b. If more words exist, print a single space
+		c. Skip whitespace
+	5. Print first word
+
+This "chunking" approach is clean because it operates on meaningful units 
+(words and spaces) rather than individual characters, 
+keeping the logic at the appropriate level of abstraction.
+
+
+
+
+
+
+
+State Machine Pattern: 
+Your solution follows a clear state machine approach, transitioning between different states 
+(leading spaces, first word, inter-word spaces, subsequent words) with each state having its own processing logic.
+
+Special Case Handling with Rotation: 
+You've implemented a pattern that handles the special case (first word) separately 
+from the general case (remaining words), which aligns with the rotation operation required.
+
+Peek-Ahead Pattern: 
+You've used a temporary pointer to look ahead without disrupting the main pointer's traversal. 
+This is a common pattern in parsing and text processing - 
+checking future conditions without altering current state.
+
+Buffer-Store-Display Pattern:
+ You store the first word in a buffer while immediately processing the rest of the input, 
+ then display the buffer at the end - a classic implementation of the rotation operation.
+
+
+
+The nested logic represents a "lookahead decision pattern," where:
+
+	You process the current state (a word)
+	You look ahead to future states (checking for more words)
+	You make a decision based on that future state (whether to print a space)
+
+
+This pattern is elegant because it allows you to make formatting decisions 
+based on content that hasn't yet been fully processed.
+
+The overall architecture follows a "process-special-case-first, then-general-logic" 
+pattern which is foundational in many algorithms, especially those dealing with 
+sequential data that needs transformation.
