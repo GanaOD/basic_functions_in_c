@@ -1,0 +1,44 @@
+key differences:
+
+Order of operations:
+
+	Your previous version first skips spaces, then identifies a word
+	The new version first identifies a word, then skips spaces
+
+
+Pointer window definition:
+
+	Previous: You set ptr_trail after finding the end of a word
+	New: You set ptr_trail at the beginning of the loop and move ptr_lead to find word boundaries
+
+
+Return condition:
+
+	Previous: Explicit return after processing the first word
+	New: Natural loop termination when ptr_lead < str
+
+
+Space handling:
+
+	Previous: if (ptr_lead > ptr_begin) condition for spaces
+	New: if (ptr_lead >= str) condition for spaces
+
+
+
+Both approaches work, but the new version is slightly cleaner because:
+
+	The flow is more straightforward - find a word, print it, move to next word
+	The pointer window definition is more intuitive
+	Loop termination is handled naturally by the loop condition
+
+
+The thought process difference is subtle but important:
+
+	Previous version: "Skip what I don't want, then find what I want"
+	New version: "Find what I want, use it, then skip what I don't want"
+
+
+The second approach tends to lead to cleaner code because it focuses on the core operations (finding and printing words) rather than the intermediate steps (skipping spaces).
+
+Neither is objectively "better" - they represent different ways of thinking about traversal problems. 
+The new version is slightly more elegant in how it handles the flow and boundary conditions.

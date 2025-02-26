@@ -17,7 +17,8 @@ ISSUES:
 2. peeking ahead AND checking string start in same condition - mixing 2 different boundary cases
 
 
-Math perspective: category error - mixing two different types of boundaries that, while both telling us "write the word", have fundamentally different implications for the next steps:
+Math perspective: category error - mixing two different types of boundaries that, 
+while both telling us "write the word", have fundamentally different implications for the next steps:
 
 Space boundary: Signals both
 	"Write current word"
@@ -30,14 +31,15 @@ String start boundary: Signals
 
 
 
-By combining these in a single predicate if (space OR start), I lost the distinction between these 2 categories of boundary conditions. 
+By combining these in a single predicate if (space OR start), 
+I lost the distinction between these 2 categories of boundary conditions. 
 Each category should trigger its own distinct control flow.
 
 
 
 
 
-Deriving principles for structured program design:
+## Deriving principles for structured program design:
 
 Separation of Concerns
 	Each boundary condition (space vs start) represents a distinct concern
@@ -73,8 +75,12 @@ Word domain: while (ptr_lead > ptr_begin && !is_space(*ptr_lead))
 
 
 
-The original structure mixed these domains incorrectly. By establishing string traversal as our primary domain, word-level operations naturally fit within it as sub-operations.
+The original structure mixed these domains incorrectly. 
+By establishing string traversal as primary domain, 
+word-level operations naturally fit within it as sub-operations.
+
+
 This is like in mathematics where we:
 
-First establish our domain (e.g., ℝ)
-Then define operations valid within that domain (e.g., continuous functions on ℝ)
+	First establish our domain (e.g., ℝ)
+	Then define operations valid within that domain (e.g., continuous functions on ℝ)

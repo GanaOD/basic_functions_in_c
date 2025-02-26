@@ -1,0 +1,27 @@
+Possible approach:
+
+First, find the end of the string with a simple loop.
+
+Then, work backwards from the end:
+
+	Track the start and end positions of each word
+	When you find a complete word, print it
+	Continue until you've processed the entire string
+
+
+
+core logic:
+	Find the end of a word (ptr_trail)
+	Find the start of the same word (ptr_lead)
+	Print the word
+	Add a space if more words remain
+	Move to the previous word
+
+
+
+For identifying word boundaries when working backwards:
+peek-ahead ptr
+
+minimise state tracking
+
+

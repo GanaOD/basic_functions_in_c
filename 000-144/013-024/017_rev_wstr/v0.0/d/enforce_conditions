@@ -1,4 +1,4 @@
-my attempt: end of while loop loop, after having writting word:
+my attempt: end of while loop, after having written word:
 
 if (is_space(*(ptr_lead - 1))) // if next char is space
 		write (1, " ", 1); // write 1 space
@@ -24,6 +24,7 @@ So when we reach the if (ptr_lead > ptr_begin):
 	If true: must have stopped at a space (the other possible condition)
 	If false: must be at string beginning
 
+
 explicit checks were redundant:
 the logic is already enforced by the while loop's exit conditions. 
-The simpler condition ptr_lead > ptr_begin captures both cases elegantly.
+The simpler condition ptr_lead > ptr_begin captures both cases

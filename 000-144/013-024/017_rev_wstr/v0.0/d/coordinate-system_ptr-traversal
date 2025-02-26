@@ -5,7 +5,8 @@ ptr_lead--
 
 coordinate systems and direction of traversal
 
-In memory/string space, there's a natural coordinate system where addresses increase from start to end (positive direction). 
+In memory/string space, there's a natural coordinate system where addresses 
+increase from start to end (positive direction). 
 
 But ptr_lead's traversal is in the negative direction relative to this underlying space.
 

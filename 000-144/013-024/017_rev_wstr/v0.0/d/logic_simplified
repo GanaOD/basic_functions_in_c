@@ -1,11 +1,14 @@
 during iteration from end of str back to beginning:
 
 Sliding pointer window:
-ptr_lead: scouts ahead to beginning of word (where peeking ahead reveals space/beginning of word) - so store this too: ptr_begin
+ptr_lead: scouts ahead to beginning of word (where peeking ahead reveals space/beginning of word) 
+- so store this too: ptr_begin
 ptr_trail: stays at end of word, gets pointed to the end of each successive word
 
-pass ptr_lead to write syscall. length calculated through difference in ptrs
-	letting write handle the iteration internally rather than doing it manually (char by char, iterating ptr_lead back to _trail)
+pass ptr_lead to write syscall. 
+length calculated through difference in ptrs
+	letting write handle the iteration internally rather than doing it manually 
+	(char by char, iterating ptr_lead back to _trail)
 
 
 Boundary conditions / delimiters for ptr_lead:
