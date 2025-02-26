@@ -1,0 +1,10 @@
+# PROBLEMO
+
+I originally tried calculating char result directly within the address operator (in write call): write(1, &((i % 10) + '0'), 1)
+COMPILER ERROR
+
+# EXPLANATION
+
+the compiler interpreted it as trying to take the address of a temporary value (the result of the expression (i % 10) + '0'). 
+You can't take the address of a temporary expression result because it doesn't have a stable memory location. 
+By storing it in a char variable first, you give it a proper memory location that can be referenced with &.

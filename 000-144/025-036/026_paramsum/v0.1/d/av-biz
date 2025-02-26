@@ -1,0 +1,42 @@
+I originally began main with:
+
+if (!av)
+		return (1);
+
+
+redundant. The C standard guarantees that when a program starts, 
+av is always a valid pointer to an array of strings (even if empty), 
+so it will never be NULL in a standard-conforming implementation
+
+
+
+
+(void)av
+
+a compiler-related convention, not really a computational principle. 
+It's about explicitly communicating intent to both the compiler and other programmers.
+
+
+From a technical standpoint:
+
+	When you declare a parameter in a function but don't use it, 
+	most modern compilers will generate a warning (e.g., -Wunused-parameter in GCC/Clang)
+
+	Casting the parameter to void creates an expression that has no effect (it evaluates the expression but discards the result)
+
+	This satisfies the compiler that you've "used" the parameter, silencing the warning
+
+
+
+This technique is valuable because:
+
+	It distinguishes between accidentally unused parameters (bugs) and intentionally unused parameters (design choice)
+
+	It maintains the function signature required by an interface or standard while clearly indicating which parts you're not using
+
+	It improves code readability by explicitly documenting that ignoring the parameter is intentional
+
+
+
+It's a small example of the broader principle that good code communicates intent, not just instructions. 
+The compiler doesn't need the cast for correctness - it's purely informational.
