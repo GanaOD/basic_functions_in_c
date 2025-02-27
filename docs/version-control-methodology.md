@@ -9,4 +9,3 @@
 	what I'm actively working on now
 	merged with crucible when complete
 
-git checkout -b set-
