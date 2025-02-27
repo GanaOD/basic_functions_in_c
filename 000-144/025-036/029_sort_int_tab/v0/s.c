@@ -1,23 +1,26 @@
 void	sort_int_tab(int *tab, unsigned int size)
 {
-	int	i = 1; // start with 2nd element
-	int	j;		// will be used to find correct position
-	int	current_value; // to temporarily store value that will be inserted
-
-	while (i < size) // loop processes each element from index 1 to end of array
-	{
-		current_value = tab[i]; // always store current value, even if it won't be moved (easier implementation)
-		j = i;
-
-		while (j > 0 && tab[j - 1] > current_value) // crucial comparison, determines if shifting needed
-		{
-			tab[j] = tab[j - 1]; // "shifting to the right" as I move backward through sorted portion to make room for current value
-			j--;
-		}
-
-		tab[j] = current_value;
-		i++;
-	}
+    int	i = 1;          // Start with 2nd element because a single-element array is already sorted
+    int	j;              // Index used to scan backward through the sorted portion to find correct insertion position
+    int	current_value;  // Temporary storage for the current element being inserted into the sorted portion
+    
+    while (i < size)    // Process each unsorted element (everything from index 1 to size-1)
+    {
+        current_value = tab[i]; // Save the current element that needs to be inserted into the sorted portion
+        j = i;                   // Start comparison from the current element's position
+        
+        // Move backward through the sorted portion (0 to i-1)
+        // and shift elements right as long as they're greater than current_value
+        while (j > 0 && tab[j - 1] > current_value)
+        {
+            tab[j] = tab[j - 1]; // Shift this element right to make space for current_value
+            j--;                  // Move to the previous element to continue comparison
+        }
+        
+        tab[j] = current_value;   // Insert current_value at its correct position in the sorted portion
+        
+        i++;                      // Move to the next unsorted element
+    }
 }
 
 #include <stdio.h>

@@ -2,7 +2,8 @@ function structured as a sequential transformation pipeline where:
 
 	I begin with the high-level control flow (iterating through each character)
 
-	I handle the specific transformation logic in the middle (the branching for lowercase/uppercase/non-alphabetical chars)
+	I handle the specific transformation logic in the middle 
+	(the branching for lowercase/uppercase/non-alphabetical chars)
 
 	I complete with the output operation (writing the transformed character)
 

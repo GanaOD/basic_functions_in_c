@@ -9,7 +9,8 @@ dealing with:
 	A traversal strategy - how we move through the structure systematically
 
 
-From a mathematical perspective, we're exploring the connected component that contains the starting point, replacing each element we visit. This is *isomorphic to a breadth-first or depth-first traversal of a graph where:
+From a mathematical perspective, we're exploring the connected component that contains the starting point,
+replacing each element we visit. This is *isomorphic to a breadth-first or depth-first traversal of a graph where:
 
 	Nodes are the cells in the grid
 	Edges exist between orthogonally adjacent cells with the same character value

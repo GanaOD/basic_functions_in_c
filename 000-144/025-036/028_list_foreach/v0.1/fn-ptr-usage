@@ -1,7 +1,7 @@
 In C, function pointers have specific syntax rules for both declaration and usage:
 
 
-Your incorrect syntax: *f(begin_list->data)
+## My original incorrect syntax: *f(begin_list->data)
 
 This is parsed as *(f(begin_list->data)) due to operator precedence
 This means "call function f with argument begin_list->data, then dereference the result"
@@ -9,7 +9,7 @@ But f is not a function - it's a pointer to a function
 
 
 
-Correct syntax: (*f)(begin_list->data)
+## Correct syntax: (*f)(begin_list->data)
 
 This means "dereference the function pointer f, then call that function with argument begin_list->data"
 The parentheses around *f are necessary because function call operator () has higher precedence than dereference operator *

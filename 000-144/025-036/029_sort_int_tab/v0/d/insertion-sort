@@ -39,3 +39,23 @@ key insights here:
 
 Insertion sort mimics the way people often sort cards in their hand - 
 you pick up a card and insert it into its proper position in the already-sorted cards you're holding.
+
+
+
+# Pattern
+
+can be described as a "growing ordered partition with backward traversal for insertion." This algorithm embodies several computational patterns:
+
+Partition maintenance: The array is conceptually divided into two partitions - sorted (left) and unsorted (right). With each iteration, the boundary moves right, growing the sorted partition.
+
+Backward traversal for insertion: When placing a new element into the sorted partition, we don't scan from beginning to end, but rather from the insertion point backward, which creates a more efficient movement pattern for in-place sorting.
+
+Sliding window with memory: The algorithm maintains knowledge of what's been previously processed (the sorted portion) and uses that to inform future decisions.
+
+Element displacement cascade: When inserting an element, we don't swap pairs of elements (as in bubble sort). Instead, we create a "ripple effect" or cascade, where elements shift right to make room.
+
+Single-pass with nested comparisons: The overall structure has a linear traversal (the outer loop) with a variable-depth nested exploration (the inner loop).
+
+
+
+This pattern appears in other algorithms beyond sorting - anywhere we need to maintain an invariant property in one region while processing elements to join that region

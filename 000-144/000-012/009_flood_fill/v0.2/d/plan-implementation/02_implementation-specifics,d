@@ -3,15 +3,23 @@
 
 We pass the t_point struct by value (copy) rather than by pointer because:
 
-Efficiency for small structs: t_point is a very small struct (just two integers), so copying it is as efficient or more efficient than dereferencing a pointer.
+Efficiency for small structs: 
+t_point is a very small struct (just two integers), so copying it is as efficient or more efficient than dereferencing a pointer.
 
-Simplicity: Passing by value makes the code cleaner as we access members directly with . syntax instead of using -> for pointer dereferencing.
+Simplicity: 
+Passing by value makes the code cleaner as we access members directly with . syntax instead of using -> for pointer dereferencing.
 
-Immutability guarantees: When passing by value, we ensure that the original struct can't be accidentally modified by the function. This is especially important for parameters like size that shouldn't change.
+Immutability guarantees: 
+When passing by value, we ensure that the original struct can't be accidentally modified by the function. 
+This is especially important for parameters like size that shouldn't change.
 
-Stack simplicity: For recursive functions, keeping parameter passing simpler and directly on the stack (rather than heap allocations or pointer manipulations) can make the code easier to reason about.
+Stack simplicity: 
+For recursive functions, keeping parameter passing simpler and directly on the stack 
+(rather than heap allocations or pointer manipulations) can make the code easier to reason about.
 
-Convenience for temporary points: We can easily create temporary point values in-line with code like (t_point){current.x + 1, current.y}, which is more concise than creating and passing pointers.
+Convenience for temporary points: 
+We can easily create temporary point values in-line with code like 
+(t_point){current.x + 1, current.y}, which is more concise than creating and passing pointers.
 
 
 
@@ -20,7 +28,7 @@ while larger structs or those that need to be modified would be passed by pointe
 
 
 
-# t_point){}
+# (t_point){}
 
 The (t_point){} notation is creating a temporary anonymous t_point variable directly inline.
 

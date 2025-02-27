@@ -2,6 +2,7 @@ basic main function: want to print result to stdout
 
 no built-in function that will automatically iterate and print an array of integers
 
+
 insights:
 	
 	Arrays in C don't carry their length information with them
@@ -17,4 +18,4 @@ insights:
 passed len by pointer 
 
 
-then ditched this main
+then ditched this main (s0.c)

@@ -11,3 +11,9 @@ flood_fill:
 ft_listforeach:
 	Explore how to detect cycles in a list
 	See how Ada's type system would handle this list problem differently
+
+
+
+doc:
+
+process 023: addressable-obj-vs-temp-results

@@ -1,7 +1,8 @@
 pattern perspective: this problem is about partitioning a sequence and 
 rotating the first partition to the end. 
 
-Mathematically, if we have a sequence S = {w₁, w₂, ..., wₙ}, 
+
+if we have a sequence S = {w₁, w₂, ..., wₙ}, 
 the operation transforms it to S' = {w₂, w₃, ..., wₙ, w₁}, 
 where each wᵢ is a "word" (contiguous non-whitespace characters).
 
@@ -23,7 +24,7 @@ From a state machine perspective, code will transition between:
 
 
 
-The branching approach with sub-loops is elegant here because it maps cleanly to these distinct states. 
+The branching approach with sub-loops maps cleanly to these distinct states. 
 Each branch handles a specific part of the transformation with its own termination condition.
 
 
@@ -66,15 +67,18 @@ Buffer-Store-Display Pattern:
 
 
 
-The nested logic represents a "lookahead decision pattern," where:
+The nested logic represents a "lookahead decision pattern," where I:
 
-	You process the current state (a word)
-	You look ahead to future states (checking for more words)
-	You make a decision based on that future state (whether to print a space)
+	 process the current state (a word)
+	 look ahead to future states (checking for more words)
+	 make a decision based on that future state (whether to print a space)
 
 
-This pattern is elegant because it allows you to make formatting decisions 
+This pattern allows me to make formatting decisions 
 based on content that hasn't yet been fully processed.
+
+
+
 
 The overall architecture follows a "process-special-case-first, then-general-logic" 
 pattern which is foundational in many algorithms, especially those dealing with 

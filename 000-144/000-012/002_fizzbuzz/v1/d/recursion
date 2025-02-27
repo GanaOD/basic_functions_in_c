@@ -1,9 +1,0 @@
-v1 approach uses the fundamental property that in base-10:
-	Each digit can be extracted via modulo (% 10)
-	The remaining digits can be accessed by integer division (/ 10)
-
-Come back to:
-alternative recursive structures in C, e.g.:
-	termination-first
-	pass accumulator
-	ptr arithmetic

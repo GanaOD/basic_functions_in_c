@@ -1,17 +1,18 @@
-about sequence pattern matching with certain constraints
 
 	We need to find if the characters of s1 appear in s2 in the same order
 	Characters from s1 can be separated by other characters in s2
 	The empty string is considered hidden in any string
 
-pattern matching - specifically a subsequence matching problem. 
+Pattern matching - specifically a subsequence matching problem. 
 	about ordered elements existing within a larger sequence.
 
 
 
 implementation:
+
 For each character in s1:
     Find this character in the remaining portion of s2
     If not found, the pattern doesn't exist (return 0)
     If found, continue searching for the next character in s1 from the next position in s2
+		
 If we've examined all characters in s1, the pattern exists (return 1)

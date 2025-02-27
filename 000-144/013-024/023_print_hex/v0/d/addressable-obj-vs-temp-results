@@ -1,0 +1,16 @@
+key distinction in C when passing expressions to function calls, particularly with write(). The issue touches on evaluation order and memory access.
+When you do:
+cCopywrite(1, &hex_digits[int_base10 % 16], 1);
+This works because &hex_digits[int_base10 % 16] evaluates to a pointer to a specific memory location in your pre-allocated array. The expression int_base10 % 16 is evaluated first, producing an index, then that index accesses the array, and finally the address operator & gets the memory address of that specific character.
+What likely failed in your previous attempt was something like:
+cCopywrite(1, &(int_base10 % 16 + '0'), 1); // This won't work
+This fails because the expression (int_base10 % 16 + '0') computes a value, not a memory location. The & operator then tries to take the address of this temporary value, which isn't stored in a dedicated memory location.
+The crucial difference:
+
+Array access + address operator: Points to established memory location
+Expression + address operator: Attempts to reference temporary computation result
+
+For expressions, you need to store the result in a variable first:
+cCopychar c = int_base10 % 16 + '0';
+write(1, &c, 1);
+This pattern is archetypal in C: distinguishing between addressable objects (variables, array elements) versus temporary computation results that exist only during evaluation.

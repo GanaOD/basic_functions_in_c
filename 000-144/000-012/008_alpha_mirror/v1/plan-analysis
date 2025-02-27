@@ -34,7 +34,10 @@ For uppercase letters: 'Z' - (c - 'A')
 
 
 A bitwise approach could handle both cases in one line. 
-The key insight is that the lowercase and uppercase letters are 32 positions apart in the ASCII table, but their relative positions within their respective alphabets are identical.
+The key insight is that the lowercase and uppercase letters are 32 positions apart in the ASCII table, 
+but their relative positions within their respective alphabets are identical.
+
+
 
 Using XOR operations:
 	To mirror within the alphabet: ('a' + 'z') - c or ('A' + 'Z') - c

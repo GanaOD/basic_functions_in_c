@@ -19,7 +19,7 @@ long int	my_atoi(char *str)
 
 void	print_hex_recursive(long int int_base10)
 {
-	char hex_digits[] = "0123456789abcdef";
+	char hex_digits[] = "0123456789abcdef"; // lookup table
 
 	if (int_base10 >= 16)
 		print_hex_recursive(int_base10 / 16);

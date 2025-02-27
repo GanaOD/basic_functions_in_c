@@ -3,7 +3,7 @@ unsigned int parameter:
 means the number is always non-negative
 has a range from 0 to UINT_MAX (typically 4,294,967,295 on most systems)
 
-I don't need to worry about negative numbers
+
 
 
 

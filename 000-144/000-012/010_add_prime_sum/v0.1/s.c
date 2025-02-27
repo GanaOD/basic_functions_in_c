@@ -11,6 +11,7 @@ int	ahoi_atoi(char *str)
 	
 	while (*str) 
 	{
+		// valid input check
 		if (*str >= '0' && *str <= '9')
 		{
 			result = (result * 10) + (*str - '0');
@@ -42,7 +43,7 @@ int is_prime(int n)
 	while (i * i <= n)
 	{
 			if (n % i == 0)
-					return (0);
+				return (0);
 			i += 2;  // Skip even numbers
 	}
 	return (1);
@@ -63,7 +64,6 @@ void	display_prime_sum(int prime_sum)
 
 /*	ORCHESTRATION	+ MAIN COMPUTATION	*/
 
-// calculate prime_sum
 void	add_prime_sum(char *str)
 {
 	int	input = ahoi_atoi(str);
@@ -77,6 +77,7 @@ void	add_prime_sum(char *str)
 		return ;
 	}
 
+	// iterate & accumulate prime nrs: calculate prime_sum
 	while (count < input)
 	{
 		if (is_prime(count))

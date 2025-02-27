@@ -23,6 +23,7 @@ to compile your assignment.
 Functions passed as cmp will always return a value different from 
 0 if a and b are in the right order, 0 otherwise.
 
+
 For example, the following function used as cmp will sort the list 
 in ascending order:
 
@@ -30,3 +31,15 @@ int ascending(int a, int b)
 {
 	return (a <= b);
 }
+
+
+
+// list.h
+
+typedef struct s_list t_list;
+
+struct s_list
+{
+	int     data;
+	t_list  *next;
+};

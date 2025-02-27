@@ -1,6 +1,6 @@
 Was counter-intuitive to me: [y,x] where I'm used to using (x, y) in mathematics
 
-Same here as in corrdinates of Excel spreadsheet
+Same here as in coordinates of Excel spreadsheet
 
 in array access we go [y][x] because:
 	First we select which row (y coordinate)

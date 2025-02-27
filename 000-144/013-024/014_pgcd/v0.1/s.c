@@ -50,7 +50,9 @@ void	pgcd(char *s1, char *s2)
 		return ;
 
 	// validate inputs contain only digits
-	char	*temp = s1;
+	char	*temp; 
+	
+	temp = s1;
 	while (*temp)
 	{
 		if (*temp < '0' || *temp > '9')

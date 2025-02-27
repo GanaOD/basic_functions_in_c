@@ -26,3 +26,29 @@ We'll need to keep track of:
 	The node being considered for insertion
 	The previous node (to adjust pointers when removing)
 	Where to insert it in the sorted portion
+
+
+
+understanding the essence of insertion sort as applied to a linked list, focusing on the mathematical structure first.
+First, let's clarify what we're working with. This is a linked list sorting problem using a comparison function pointer to determine order. The linked list structure will be defined in "list.h".
+The essence of insertion sort on a linked list is different from an array because:
+
+We don't have random access to elements
+Node rearrangement requires pointer manipulation instead of value swapping
+
+Let's think about what the t_list structure likely contains:
+
+A data field (int, based on the comparison function)
+A next pointer to the next node
+
+For insertion sort on a linked list, consider these key operations:
+
+Iterate through the list
+For each node, find its correct position in the already-sorted portion
+Remove the node from its current position
+Insert it into its correct position
+
+The algorithm complexity is different from array insertion sort because:
+
+Finding insertion position requires traversing from the head
+Pointer manipulation is O(1) once positions are found

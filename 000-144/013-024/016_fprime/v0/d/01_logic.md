@@ -3,7 +3,9 @@ Key insight
 any number can be uniquely decomposed into a product of prime factors. 
 This is the Fundamental Theorem of Arithmetic.
 
-When we think about factorization, we can visualize it as repeatedly "extracting" the smallest possible divisors from a number until nothing remains but 1.
+When we think about factorization, we can visualize it as repeatedly "extracting" 
+the smallest possible divisors from a number until nothing remains but 1.
+
 
 
 # Design Principles
@@ -16,6 +18,7 @@ By starting with the smallest possible factor (2) and incrementing, we automatic
 
 Efficiency through Division: 
 When we find a factor, we divide the number by it immediately, reducing the problem size.
+
 
 
 
@@ -32,10 +35,15 @@ Try 4: 5 ÷ 4 = 1.25 (Not divisible)
 Try 5: 5 ÷ 5 = 1 (Factor found!)
 Result is 1, we're done: 2 * 2 * 3 * 5
 
+
+
 why did we try 4? It's not prime. 
-This is where an insight emerges: we don't need to check if our factors are prime because composite numbers will never be factors if we work in ascending order.
-Why? By the time we reach a composite number (like 4), its prime factors (2*2) would have already divided the number if they could. 
-This is a beautiful mathematical property that simplifies our algorithm.
+This is where an insight emerges: we don't need to check if our factors are prime 
+because composite numbers will never be factors if we work in ascending order.
+
+Why? By the time we reach a composite number (like 4), its prime factors (2*2) 
+would have already divided the number if they could. 
+This mathematical property simplifies algorithm.
 
 
 
@@ -90,60 +98,13 @@ Stop when the number reaches 1
 
 
 
-This approach is elegant because:
-
-It doesn't require precomputing prime numbers or storing them
-It finds factors in ascending order naturally
-It handles prime inputs correctly (they're just printed as is)
-It's efficient because it divides by each factor as many times as possible before moving to the next
-
-
 
 
 # Implementation steps
-
-#include <stdio.h>
-#include <stdlib.h>
-
-void	fprime(char *str)
-{
-	// don't need str param error check !str 
-	// or check whether str contents (chars) are valid
-	// these both guaranteed by subj
-
-	int	nbr = atoi(str);
-
-	if (nbr == 1)
-		printf("1"); return ;
-	
-	int	factor = 2;
-	int	first_factor = 1;
-
-	while (nbr > 1)
-	{
-		if (nbr % factor == 0)
-		{
-
-		}
-		else factor++;
-	}
-}
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-		fprime(av[1]);
-	printf("\n");
-	return (0);
-}
-
-
-Need sth. to manage output formatting, hence first_factor flag
-
-
 # first_factor flag: output formatting
 
-The first_factor variable is a flag that helps us manage the formatting of the output, specifically when to print the "*" separator between factors.
+The first_factor variable is a flag that helps us manage the formatting of the output, 
+specifically when to print the "*" separator between factors.
 
 
 We initialize first_factor = 1 (true) at the beginning.
@@ -169,5 +130,5 @@ For example, with 60:
 Final output: "223*5"
 
 
-a one-time switch that transitions from "first factor" to "subsequent factors" mode. Once it's turned off (set to 0), it stays off for the remainder of the function execution.
-These kinds of simple patterns in code are elegant precisely because they accomplish exactly what's needed with minimal complexity
+a one-time switch that transitions from "first factor" to "subsequent factors" mode. 
+Once it's turned off (set to 0), it stays off for the remainder of the function execution.

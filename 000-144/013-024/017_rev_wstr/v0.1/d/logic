@@ -27,7 +27,8 @@ The mathematical beauty lies in how the algorithm breaks down into simple, clean
 	Handle transition markers (spaces) only where needed
 
 
-This reveals a core principle in computation: when working with sequential data, often the simplest approach is to use natural boundaries in the data rather than creating artificial states. 
+This reveals a core principle in computation: when working with sequential data, often the simplest approach 
+is to use natural boundaries in the data rather than creating artificial states. 
 The algorithm's elegance comes from its alignment with the intrinsic structure of the problem.
 
 
@@ -35,11 +36,9 @@ The algorithm's elegance comes from its alignment with the intrinsic structure o
 
 
 
-# boundary management versus position adjustment. "reference transformation" rather than "state preservation" 
+# boundary management vs position adjustment	:	 "reference transformation" vs "state preservation" 
 
 (changing my complex conditions with peek ahead pointer to just looking at current ptr value)
-
-principle of "reference transformation" rather than "state preservation." 
 
 Instead of maintaining a perfect state where pointers never cross boundaries, you simply transform the reference when using it (ptr_lead + 1).
 
@@ -60,6 +59,8 @@ By allowing boundary crossing and simple adjustment, you eliminate entire catego
 
 
 
-From a mathematical perspective, this is akin to how derivatives work - capturing the moment of change rather than preventing the change. The elegance comes from embracing transitions rather than avoiding them.
+From a mathematical perspective, this is akin to how derivatives work - capturing the moment of change rather than preventing the change. 
+The elegance comes from embracing transitions rather than avoiding them.
 
-In system design, this principle appears repeatedly: rather than building complex mechanisms to prevent state transitions, simply detect them and apply simple transformations when using the information.
+In system design, this principle appears repeatedly: rather than building complex mechanisms to prevent state transitions, 
+simply detect them and apply simple transformations when using the information.

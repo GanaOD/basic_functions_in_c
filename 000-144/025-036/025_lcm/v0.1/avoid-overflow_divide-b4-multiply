@@ -2,18 +2,20 @@
 
 unsigned int	result = (a * b) / hcf;
 
-# problem: int overflow potential
+!! problem: int overflow potential
+
+
 
 
 ## Mathematical Principles
 
+
 Distributive Property Application: 
-The LCM formula 
-LCM(a,b) = (a*b)/HCF(a,b) 
-can be rewritten using the distributive property 
-as LCM(a,b) = (a/HCF(a,b)) * b
+The LCM formula				LCM(a,b) = (a*b)/HCF(a,b) 
+can be rewritten using the distributive property as				LCM(a,b) = (a/HCF(a,b)) * b
 
 Mathematically these are equivalent, but computationally they have different implications.
+
 
 Number Theory Insight: 
 Since a and HCF(a,b) share common factors by definition, 
@@ -22,6 +24,8 @@ This division doesn't lose information but reduces the magnitude before multipli
 
 Invariant Preservation: 
 The rearrangement preserves the mathematical invariant while changing the computational path.
+
+
 
 
 

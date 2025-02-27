@@ -13,8 +13,8 @@ so it will never be NULL in a standard-conforming implementation
 
 (void)av
 
-a compiler-related convention, not really a computational principle. 
-It's about explicitly communicating intent to both the compiler and other programmers.
+a compiler-related convention
+about explicitly communicating intent to both the compiler and other programmers
 
 
 From a technical standpoint:

@@ -54,7 +54,7 @@ void	rostring(char *str)
 				str++;
 			
 			// state: in word and not end of str
-			if (*str) // implicitly no longer in space, so only check for end of str
+			if (*str) // implicitly no longer in space, so only check that not at end of str
 			{
 				// process & write word
 				while (!is_space(*str) && *str)
@@ -65,7 +65,7 @@ void	rostring(char *str)
 				// str now points to a space / end of str
 
 				// to decide whether to write space, need to check if there's an upcoming word
-				// need to peek ahead to see if there are any non-space characters 
+				// will peek ahead to see if there are any non-space characters 
 				// after current spaces. But we can't permanently advance str yet 
 				// because we're still in the middle of our loop
 				// therefore temp pointer

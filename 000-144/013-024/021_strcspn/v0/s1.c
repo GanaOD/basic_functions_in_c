@@ -6,7 +6,6 @@ size_t	strcspn(const char *s, const char *reject)
 		return (0);
 
 	size_t	i = 0;
-	
 	while (s[i] != '\0')
 	{
 		size_t	j = 0;
