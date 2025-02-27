@@ -1,22 +1,22 @@
 # level00: repository
 
-Organisation: numerical
-	more or less corresponding to order of first time working on problem
-	subdirectories for groups of 12
+problems
 
-docs: meta-information on this repository
+docs: 		meta-information on this repository
 
 
 
 
 # level01 >> problems (numbered sub-directories)
 
-current group of 12 as active repo
+Organisation: numerical
+	more or less corresponding to order of first time working on problem
+	
+subdirectories:
+	000-143			12^2 with sets of 12
+	144-399			16^2 with sets of 16
 
-previous groups are archived
 
-maybe:
-	upcoming problems in "upcoming"
 
 
 
