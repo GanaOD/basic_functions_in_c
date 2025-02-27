@@ -1,8 +1,0 @@
-*(s2 + 1)
-
-different than peeking-ahead i've used to date: 
-here i'm doing a safety look-ahead (ensuring space exists)
-	before striding ahead / taking off by 2
-	doesn't analyse the actual "landing spot" 
-where before i've used a content look-ahead:
-	looking at actual next character(s) to make decisions

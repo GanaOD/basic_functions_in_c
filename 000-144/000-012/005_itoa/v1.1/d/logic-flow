@@ -3,7 +3,7 @@
 
 ## Two-phase processing: You first calculate the length, then fill the string.
 
-This is mathematically elegant because it avoids resizing memory.
+avoids resizing memory.
 The computation separates concerns clearly: size determination, then content creation.
 
 

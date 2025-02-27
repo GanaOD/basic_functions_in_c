@@ -6,7 +6,8 @@ In general computational terms, this is called "compound assignment"
 or "augmented assignment." 
 It's syntactic sugar that combines an arithmetic operation with an assignment. 
 
-These operators are designed to make code more concise and potentially more efficient, as the variable is only accessed once.
+These operators are designed to make code more concise and potentially more efficient, 
+as the variable is only accessed once.
 
 
 Other examples in the same family include:
