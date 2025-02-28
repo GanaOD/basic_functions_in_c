@@ -50,6 +50,7 @@ INFO:
 
 /d:
 	b			brief / subject / specification / description:	problem to solve
+	src		source
 
 
 /o:
